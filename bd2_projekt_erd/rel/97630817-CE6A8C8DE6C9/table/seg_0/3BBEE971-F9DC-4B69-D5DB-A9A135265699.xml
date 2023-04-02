@@ -1,0 +1,190 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3BBEE971-F9DC-4B69-D5DB-A9A135265699" name="CAR">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:03:12 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<ordsAlias>table_11</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="1592E3A5-84FE-BE12-FD12-453BB33940A7">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:03:57 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="location_id" id="A57585AB-AABD-5EF8-D0CF-6EA624045AEF">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:53:23 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="model_id" id="E610DC75-6A55-BC53-D47A-90D6D946A20F">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:53:59 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="96235CFD-4B92-0754-2255-6CCBED72A303" referredColumn="AA9C7C6E-0AA2-E15F-7720-07D8E47113FD"/>
+</associations>
+</Column>
+<Column name="licence_type" id="59C342B0-2B42-E509-EE29-8A57A6F97E58">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:55:59 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="has_issues" id="005AA014-2D75-A90B-7A12-F2FBA05A5A08">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:57:48 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="last_inspection_id" id="FEA0B464-59B3-15F1-0210-BFA1CBE6CF5E">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:59:34 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BB54A702-6F7A-A31B-C973-FE5AB1D6458D" referredColumn="4E75CC86-8C76-B9CE-53E3-9F79874B7094"/>
+</associations>
+</Column>
+<Column name="locationX" id="5C32BCD7-E4EC-4314-B183-42E2BEC26A2A">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:01:37 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="locationY" id="59EA1D28-684D-64D6-106A-7FCA7EBA4728">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:01:37 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT020</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="insurance_id" id="628CD1CD-14C3-12E7-B682-67F084B171DE">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:10:28 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F0F38163-FC16-9AC6-D683-8EC9EA555D4B" referredColumn="0F0FD6D9-4685-0169-063F-FD2942B03264"/>
+</associations>
+</Column>
+<Column name="Column_10" id="7FB1E15F-9B6B-CCE1-073B-BB10D60C5982">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:11:27 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="registration_certificate_id" id="BC341830-3C29-D64A-9492-0FDEBE8EDA9B">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:11:27 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="137EEF7F-CD27-8B05-6178-7ABEEC621DD7" referredColumn="9E19C70B-066B-7374-9114-96D5006A42B7"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="95472B3B-74C2-4C2F-0F84-417C0CAFDEFF" name="CAR_PK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:03:57 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1592E3A5-84FE-BE12-FD12-453BB33940A7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CBD05815-FD0A-E0BF-B67C-2AF02F15B04C" name="CAR_MODEL_FK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:00:10 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E610DC75-6A55-BC53-D47A-90D6D946A20F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4A09D280-6119-6C6A-3A12-E71C2749F49D" name="CAR_TECHNICAL_INSPECTION_FK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:09:31 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FEA0B464-59B3-15F1-0210-BFA1CBE6CF5E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="510EBE96-6E77-C03F-26EC-1BDE054450EE" name="CAR_INSURANCE_FK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:10:28 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="628CD1CD-14C3-12E7-B682-67F084B171DE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E94A70B2-0F19-D15F-A4FD-557D0DD6868A" name="CAR_REGISTRATION_CERTIFICATE_FK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:11:27 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BC341830-3C29-D64A-9492-0FDEBE8EDA9B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

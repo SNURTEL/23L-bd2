@@ -1,0 +1,143 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3171EF08-5A43-2F04-B15A-0C2703242289" name="MODEL">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 13:56:00 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<ordsAlias>table_10</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="AA9C7C6E-0AA2-E15F-7720-07D8E47113FD">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 13:56:14 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="FABAF643-D852-688B-11DD-934B1473EB33">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 13:56:27 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="brand_id" id="EFD0E305-35DF-6F16-9083-0F569251C6AC">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 13:59:21 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>6</dataTypeScale>
+<ownDataTypeParameters>,6,6</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6065F566-30AB-A719-C20A-4B88C5767366" referredColumn="56C87F9C-B04C-8D49-FA78-E1C8C9F4342A"/>
+</associations>
+</Column>
+<Column name="type_id" id="D77F541B-CE93-EFB8-F546-04CC270A3A5A">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:01:29 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<dataTypeScale>6</dataTypeScale>
+<ownDataTypeParameters>,6,6</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DE968059-E285-D31A-95FC-4250C932C9CB" referredColumn="CA6E5915-F1A4-6B49-2141-AD8F25A4B7DD"/>
+</associations>
+</Column>
+<Column name="engine" id="C89A6FCE-B8AD-0EDE-77D6-41FFB6DE6ABF">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:16:45 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>&apos;diesel&apos;</dataTypePrecision>
+<dataTypeScale>&apos;hibrid&apos;</dataTypeScale>
+<dataTypeSize>ENUM(&apos;petrol&apos;</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;petrol&apos;,&apos;diesel&apos;,&apos;hibrid&apos;</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="drive_type" id="CA487221-06DA-18C0-1558-489BFDB387BA">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:16:45 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>&apos;rear&apos;</dataTypePrecision>
+<dataTypeScale>&apos;all&apos;)</dataTypeScale>
+<dataTypeSize>ENUM(&apos;front&apos;</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;front&apos;,&apos;rear&apos;,&apos;all&apos;)</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="transmission" id="A2CA82A1-67FB-D87A-71CB-BDAE1952ACAE">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:16:45 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypePrecision>&apos;automatic&apos;)</dataTypePrecision>
+<dataTypeSize>ENUM(&apos;maunal&apos;</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;maunal&apos;,&apos;automatic&apos;),</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="steats" id="863F31CC-F559-81D5-AD4F-81A113DFE5A5">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:16:45 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CA9F0026-77B2-3071-12A5-1CF1249C1953" name="MODEL_PK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 13:56:14 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AA9C7C6E-0AA2-E15F-7720-07D8E47113FD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="1CEF70EA-B6CA-325C-96C8-E1F9720D3ED9" name="MODEL_BRAND_FK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 13:59:45 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EFD0E305-35DF-6F16-9083-0F569251C6AC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="76D3582D-2AE7-0E3F-CB73-5C2865A34ACF" name="MODEL_CAR_TYPE_FK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 14:01:29 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D77F541B-CE93-EFB8-F546-04CC270A3A5A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

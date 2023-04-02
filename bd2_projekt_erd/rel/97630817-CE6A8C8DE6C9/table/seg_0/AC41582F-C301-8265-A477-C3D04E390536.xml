@@ -1,0 +1,56 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="AC41582F-C301-8265-A477-C3D04E390536" name="INSURANCE">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:05:24 UTC</createdTime>
+<comment><![CDATA[TODO fill this up lol]]></comment>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<ordsAlias>table_13</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="0F0FD6D9-4685-0169-063F-FD2942B03264">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:05:55 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="start_date" id="3BFC0CDF-EDFA-156A-E439-DC106A9A03B8">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:05:55 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="end_date" id="FD538DD1-8FA6-8704-E8CD-514F96E971C7">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:06:12 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="946B5EE9-7FF7-F8BB-83DE-C17483B34F55" name="INSURANCE_PK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:05:55 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0F0FD6D9-4685-0169-063F-FD2942B03264"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

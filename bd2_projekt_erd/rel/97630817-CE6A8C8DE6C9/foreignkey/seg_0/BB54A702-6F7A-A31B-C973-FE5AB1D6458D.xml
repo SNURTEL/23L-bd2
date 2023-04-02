@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BB54A702-6F7A-A31B-C973-FE5AB1D6458D" containerWithKeyObject="3BBEE971-F9DC-4B69-D5DB-A9A135265699" localFKIndex="4A09D280-6119-6C6A-3A12-E71C2749F49D" name="CAR_TECHNICAL_INSPECTION_FK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:09:31 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<referredTableLongName>TECHNICAL_INSPECTION</referredTableLongName>
+<deleteRule>CASCADE</deleteRule>
+<referredTableID>C2243F49-2D06-A1EA-7282-CCD71D04ECA7</referredTableID>
+<keyObject>DD6BD47B-3142-303E-AF44-562840009884</keyObject>
+<referredKeyID>DD6BD47B-3142-303E-AF44-562840009884</referredKeyID>
+<mandatory>false</mandatory>
+<refColNames>id</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

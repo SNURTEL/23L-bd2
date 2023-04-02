@@ -1,0 +1,45 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F945ADC3-5F15-A8AF-5E7C-A10B8541602A" name="CAR_TYPE">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 13:53:26 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="CA6E5915-F1A4-6B49-2141-AD8F25A4B7DD">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 13:54:02 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="52D834CE-56C5-DF3C-A777-5D361114F84A">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 13:54:13 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D27AED4B-C993-2D2E-B7D0-DFC0DC73984D" name="CAR_TYPE_PK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 13:54:02 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CA6E5915-F1A4-6B49-2141-AD8F25A4B7DD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

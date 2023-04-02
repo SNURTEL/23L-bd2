@@ -1,0 +1,4 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<oracle.dbtools.crest.model.design.relational.RelationalDesign>
+   <object objectType="main_view" objectID="0EB18612-DBD2-432E-59CD-132158496795" name="BD2 projekt szkic" visible="true"/>
+</oracle.dbtools.crest.model.design.relational.RelationalDesign>

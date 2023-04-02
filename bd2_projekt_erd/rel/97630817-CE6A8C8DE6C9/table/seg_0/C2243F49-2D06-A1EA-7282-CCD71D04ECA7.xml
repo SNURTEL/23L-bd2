@@ -1,0 +1,55 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C2243F49-2D06-A1EA-7282-CCD71D04ECA7" name="TECHNICAL_INSPECTION">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:01:54 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<ordsAlias>table_12</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="4E75CC86-8C76-B9CE-53E3-9F79874B7094">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:03:27 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="date" id="0C280C31-5A39-FD85-3AB4-7C4768720467">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:04:18 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="mechanic_id" id="800873A4-21BC-31FC-0B62-0AD4F04E2231">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:05:08 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="DD6BD47B-3142-303E-AF44-562840009884" name="TECHNICAL_INSPECTION_PK">
+<createdBy>tomek</createdBy>
+<createdTime>2023-04-02 15:03:27 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4E75CC86-8C76-B9CE-53E3-9F79874B7094"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
