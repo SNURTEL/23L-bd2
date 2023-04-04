@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="MODEL_CAR_TYPE_FK" directorySegmentName="seg_0" id="A58FF4C7-5A1A-161A-3D4F-849633B2B218">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:14:21 UTC</createdTime>
+<generatorID>DE968059-E285-D31A-95FC-4250C932C9CB</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<sourcePk>32F9238F-D954-8A27-3E1E-31D4C5A198A5</sourcePk>
+<identifying>false</identifying>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>ABCA3ECB-1B5A-02DA-184D-4EDC152028D4</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>C03A30FD-60C8-A474-0FBB-B6E6C9E754F3</targetEntity>
+<transferable>true</transferable>
+<deleteRule>CASCADE</deleteRule>
+</Relation>

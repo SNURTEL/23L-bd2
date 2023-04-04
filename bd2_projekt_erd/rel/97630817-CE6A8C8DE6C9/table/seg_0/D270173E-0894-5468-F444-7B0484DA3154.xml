@@ -1,0 +1,55 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D270173E-0894-5468-F444-7B0484DA3154" name="INVOICE">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:07:40 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<ordsAlias>table_17</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="invoice_id" id="B9BD4419-08BE-4513-3CC9-80E6C43BAC81">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:08:01 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="rental_order_id" id="17CF7679-60AA-E16A-7680-AA141933C754">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:08:31 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NIP" id="8B693057-C770-1EE6-A7C5-8B210200A44D">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:09:07 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="52F5C0ED-0406-841F-70DD-8D1F5AFE6721" name="INVOICE_PK">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:08:01 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B9BD4419-08BE-4513-3CC9-80E6C43BAC81"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

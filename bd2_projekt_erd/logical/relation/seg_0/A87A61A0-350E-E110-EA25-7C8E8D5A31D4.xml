@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="RENTAL_ORDER_CUSTOMER_FK" directorySegmentName="seg_0" id="A87A61A0-350E-E110-EA25-7C8E8D5A31D4">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:14:21 UTC</createdTime>
+<generatorID>F6EACB2F-023F-8EC4-D7F8-25517DCD776C</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<sourcePk>1D1E22C6-1B5E-70C5-BBA0-1BB058B9F033</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>E4DD8D5C-8FC2-0C77-067E-31E185D01E5D</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>EDA7EF5F-EE4E-4C14-CEC3-AAC5D16F1019</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

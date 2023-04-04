@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CAR_REGISTRATION_CERTIFICATE_FK" directorySegmentName="seg_0" id="92D8C3DA-F9E0-A82F-9F29-429346B19DC6">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:14:21 UTC</createdTime>
+<generatorID>137EEF7F-CD27-8B05-6178-7ABEEC621DD7</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<sourcePk>42101DA3-82CB-7423-B664-612DD3C6C4F8</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>03345F8D-9F39-C50F-1D4F-62FC026C76A9</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>CD854D1C-070E-34AD-A588-DA39CAC03827</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

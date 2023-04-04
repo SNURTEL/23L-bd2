@@ -1,0 +1,148 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F073AD2E-0F20-E8DE-7A8F-15C532A3692C" name="RENTAL_ORDER">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:57:38 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<ordsAlias>table_16</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="B0511D34-B0EF-DDC9-FB46-98C650D6A0BF">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:59:24 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="car_id" id="A3022307-ECED-A9FD-C9B0-8D5F4DD89C21">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:05:14 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="74464FF2-767D-E92C-045F-6F8EE7B89B08" referredColumn="1592E3A5-84FE-BE12-FD12-453BB33940A7"/>
+</associations>
+</Column>
+<Column name="customer_id" id="3803C165-C765-1C46-7275-98E5762F74AA">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:01:25 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F6EACB2F-023F-8EC4-D7F8-25517DCD776C" referredColumn="22E6FE34-6027-96A5-B59B-D1233AB2D3A3"/>
+</associations>
+</Column>
+<Column name="state" id="19738914-2643-F0CD-E091-1E6771DD5B91">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:00:20 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>ENUM(&apos;awaiting&apos;,</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;awaiting&apos;,,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="fee_rate" id="D4B9862C-1024-488E-D506-7136F56D55CC">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:02:07 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT043</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="start_date_time" id="3FAC1198-9C6F-0842-74DC-83833706EA2F">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:03:07 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="end_date_time" id="46E3FEB6-95DA-CC6F-8C19-0A3FB5354E39">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:03:25 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="invoice_id" id="C90B7799-EBD5-CDC8-59F4-FFBE12EDBF06">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:04:17 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EADD3B27-016E-5487-2972-9D8A52D2DC08" referredColumn="B9BD4419-08BE-4513-3CC9-80E6C43BAC81"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D651CBC1-4337-4E78-76AB-1B7FB008CE69" name="RENTAL_ORDER_PK">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:59:24 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B0511D34-B0EF-DDC9-FB46-98C650D6A0BF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7B309349-9A0D-1219-249E-47AE13FA2233" name="RENTAL_ORDER_CAR_FK">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:05:48 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A3022307-ECED-A9FD-C9B0-8D5F4DD89C21"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="11434870-221D-A422-FF1D-A49739B9BDF8" name="RENTAL_ORDER_CUSTOMER_FK">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:06:04 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3803C165-C765-1C46-7275-98E5762F74AA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0FF27AB5-47DE-BA10-7A20-510245D0EDEB" name="RENTAL_ORDER_INVOICE_FK">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:09:32 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C90B7799-EBD5-CDC8-59F4-FFBE12EDBF06"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

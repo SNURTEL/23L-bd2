@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="RENTAL_ORDER_CAR_FK" directorySegmentName="seg_0" id="FC8CE5C4-5921-CFFB-5887-D11AF0311858">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:14:21 UTC</createdTime>
+<generatorID>74464FF2-767D-E92C-045F-6F8EE7B89B08</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<sourcePk>361CF6FA-078F-A911-479B-2697F9EE2DEC</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>CD854D1C-070E-34AD-A588-DA39CAC03827</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>EDA7EF5F-EE4E-4C14-CEC3-AAC5D16F1019</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

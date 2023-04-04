@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1C0BDABE-FB17-1A84-723A-99AF631D72DB" name="CUSTOMER">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:36:18 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="22E6FE34-6027-96A5-B59B-D1233AB2D3A3">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:39:06 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="name" id="9AFEB710-4D32-3A7A-D8F0-E023FEAD9747">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:41:09 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="surname" id="AF6BB7A6-9B66-E686-B463-C8F7AEAFD873">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:41:21 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="drivers_license_number" id="622FD249-E112-E3C6-983A-A853712C3A2E">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:42:02 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="drivers_license_category" id="8664CA7A-6C13-C1AA-0C38-21A5B1EB6933">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:42:37 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>ENUM(&apos;A&apos;,</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;A&apos;,,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BBC2556C-47FC-2CC7-6FE1-8A28AE0C62A9" name="Customer_PK">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:39:06 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="22E6FE34-6027-96A5-B59B-D1233AB2D3A3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

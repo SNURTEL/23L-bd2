@@ -110,15 +110,6 @@
 <colAssociation fkAssociation="F0F38163-FC16-9AC6-D683-8EC9EA555D4B" referredColumn="0F0FD6D9-4685-0169-063F-FD2942B03264"/>
 </associations>
 </Column>
-<Column name="Column_10" id="7FB1E15F-9B6B-CCE1-073B-BB10D60C5982">
-<createdBy>tomek</createdBy>
-<createdTime>2023-04-02 15:11:27 UTC</createdTime>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="registration_certificate_id" id="BC341830-3C29-D64A-9492-0FDEBE8EDA9B">
 <createdBy>tomek</createdBy>
 <createdTime>2023-04-02 15:11:27 UTC</createdTime>
@@ -132,6 +123,17 @@
 <associations>
 <colAssociation fkAssociation="137EEF7F-CD27-8B05-6178-7ABEEC621DD7" referredColumn="9E19C70B-066B-7374-9114-96D5006A42B7"/>
 </associations>
+</Column>
+<Column name="customer_id" id="BDF08088-3650-26E2-EC26-FE35514944DC">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 15:51:07 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

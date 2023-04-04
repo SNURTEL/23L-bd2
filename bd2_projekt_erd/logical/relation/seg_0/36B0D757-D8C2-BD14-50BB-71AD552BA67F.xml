@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CAR_TECHNICAL_INSPECTION_FK" directorySegmentName="seg_0" id="36B0D757-D8C2-BD14-50BB-71AD552BA67F">
+<createdBy>admin</createdBy>
+<createdTime>2023-04-04 16:14:21 UTC</createdTime>
+<generatorID>BB54A702-6F7A-A31B-C973-FE5AB1D6458D</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<sourcePk>EAA8FB5D-1999-CF2B-1AFE-C12B4FC0B388</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>981D7908-6DC3-2974-016C-0E3470AE5749</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>CD854D1C-070E-34AD-A588-DA39CAC03827</targetEntity>
+<transferable>true</transferable>
+<deleteRule>CASCADE</deleteRule>
+</Relation>

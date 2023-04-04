@@ -37,7 +37,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
 <dataTypeScale>6</dataTypeScale>
-<ownDataTypeParameters>,6,6</ownDataTypeParameters>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="6065F566-30AB-A719-C20A-4B88C5767366" referredColumn="56C87F9C-B04C-8D49-FA78-E1C8C9F4342A"/>
@@ -65,10 +65,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypePrecision>&apos;diesel&apos;</dataTypePrecision>
-<dataTypeScale>&apos;hibrid&apos;</dataTypeScale>
 <dataTypeSize>ENUM(&apos;petrol&apos;</dataTypeSize>
-<ownDataTypeParameters>ENUM(&apos;petrol&apos;,&apos;diesel&apos;,&apos;hibrid&apos;</ownDataTypeParameters>
+<ownDataTypeParameters>ENUM(&apos;petrol&apos;,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="drive_type" id="CA487221-06DA-18C0-1558-489BFDB387BA">
@@ -78,10 +76,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypePrecision>&apos;rear&apos;</dataTypePrecision>
-<dataTypeScale>&apos;all&apos;)</dataTypeScale>
 <dataTypeSize>ENUM(&apos;front&apos;</dataTypeSize>
-<ownDataTypeParameters>ENUM(&apos;front&apos;,&apos;rear&apos;,&apos;all&apos;)</ownDataTypeParameters>
+<ownDataTypeParameters>ENUM(&apos;front&apos;,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="transmission" id="A2CA82A1-67FB-D87A-71CB-BDAE1952ACAE">
@@ -91,9 +87,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypePrecision>&apos;automatic&apos;)</dataTypePrecision>
 <dataTypeSize>ENUM(&apos;maunal&apos;</dataTypeSize>
-<ownDataTypeParameters>ENUM(&apos;maunal&apos;,&apos;automatic&apos;),</ownDataTypeParameters>
+<ownDataTypeParameters>ENUM(&apos;maunal&apos;,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="steats" id="863F31CC-F559-81D5-AD4F-81A113DFE5A5">
