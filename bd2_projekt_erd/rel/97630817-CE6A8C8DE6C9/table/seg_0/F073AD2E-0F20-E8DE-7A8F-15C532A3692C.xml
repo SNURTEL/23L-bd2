@@ -51,8 +51,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>ENUM(&apos;awaiting&apos;,</dataTypeSize>
-<ownDataTypeParameters>ENUM(&apos;awaiting&apos;,,,</ownDataTypeParameters>
+<dataTypeSize>ENUM(&apos;awaiting&apos;</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;awaiting&apos;,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 <Column name="fee_rate" id="D4B9862C-1024-488E-D506-7136F56D55CC">

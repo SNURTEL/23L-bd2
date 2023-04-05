@@ -18,16 +18,6 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="location_id" id="A57585AB-AABD-5EF8-D0CF-6EA624045AEF">
-<createdBy>tomek</createdBy>
-<createdTime>2023-04-02 14:53:23 UTC</createdTime>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="model_id" id="E610DC75-6A55-BC53-D47A-90D6D946A20F">
 <createdBy>tomek</createdBy>
 <createdTime>2023-04-02 14:53:59 UTC</createdTime>
@@ -129,6 +119,16 @@
 <createdTime>2023-04-04 15:51:07 UTC</createdTime>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="state" id="D760502B-6C9C-D3DB-BD9A-741D6BEC8085">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 22:16:18 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>

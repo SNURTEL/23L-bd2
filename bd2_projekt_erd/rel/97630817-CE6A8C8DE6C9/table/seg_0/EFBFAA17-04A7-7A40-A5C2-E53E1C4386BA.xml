@@ -1,0 +1,106 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="EFBFAA17-04A7-7A40-A5C2-E53E1C4386BA" name="MODEL_PARAMETER">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 21:58:41 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<ordsAlias>table_23</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id" id="5A923F6E-46B0-00EA-786A-627922E38CC0">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 22:00:00 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="text_value" id="3C400D5E-CE28-7DA1-5872-741B53BB43CA">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 22:00:00 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="numerical_value" id="284E4723-1B87-34D3-6F24-914E32289B80">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 22:00:00 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MODEL_id" id="9657C532-0F2D-24CB-BEC1-CD588D7A013A">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 22:14:11 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8161EF17-D911-67A5-8556-876447D0F74B" referredColumn="AA9C7C6E-0AA2-E15F-7720-07D8E47113FD"/>
+</associations>
+</Column>
+<Column name="PARAMETER_id" id="01848D46-089E-1018-13EA-788E3C545603">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 22:15:04 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4CF3CA28-9CCA-C3F0-24AF-049ABB5960DD" referredColumn="DEC2904D-DB27-333F-787F-72988A7155C0"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="6CD639E7-40CE-7296-73E0-44A456E44D17" name="MODEL_PARAMETER_PK">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 22:00:36 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5A923F6E-46B0-00EA-786A-627922E38CC0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EDA92033-5A59-5AEF-E10E-BFC1EFD04A04" name="MODEL_PARAMETER_MODEL_FK">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 22:14:11 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="9657C532-0F2D-24CB-BEC1-CD588D7A013A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="735BF450-503C-8171-B1FD-FA8661DDCD8F" name="MODEL_PARAMETER_PARAMETER_FK">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 22:15:04 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="01848D46-089E-1018-13EA-788E3C545603"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -58,47 +58,15 @@
 <colAssociation fkAssociation="DE968059-E285-D31A-95FC-4250C932C9CB" referredColumn="CA6E5915-F1A4-6B49-2141-AD8F25A4B7DD"/>
 </associations>
 </Column>
-<Column name="engine" id="C89A6FCE-B8AD-0EDE-77D6-41FFB6DE6ABF">
-<createdBy>tomek</createdBy>
-<createdTime>2023-04-02 14:16:45 UTC</createdTime>
+<Column name="drivers_license_category" id="1EA52DBD-2738-08A0-2E0D-00F91A048AA9">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 22:05:38 UTC</createdTime>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>ENUM(&apos;petrol&apos;</dataTypeSize>
-<ownDataTypeParameters>ENUM(&apos;petrol&apos;,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="drive_type" id="CA487221-06DA-18C0-1558-489BFDB387BA">
-<createdBy>tomek</createdBy>
-<createdTime>2023-04-02 14:16:45 UTC</createdTime>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>ENUM(&apos;front&apos;</dataTypeSize>
-<ownDataTypeParameters>ENUM(&apos;front&apos;,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="transmission" id="A2CA82A1-67FB-D87A-71CB-BDAE1952ACAE">
-<createdBy>tomek</createdBy>
-<createdTime>2023-04-02 14:16:45 UTC</createdTime>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>ENUM(&apos;maunal&apos;</dataTypeSize>
-<ownDataTypeParameters>ENUM(&apos;maunal&apos;,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="steats" id="863F31CC-F559-81D5-AD4F-81A113DFE5A5">
-<createdBy>tomek</createdBy>
-<createdTime>2023-04-02 14:16:45 UTC</createdTime>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<dataTypeSize>ENUM(&apos;A&apos;</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;A&apos;,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
