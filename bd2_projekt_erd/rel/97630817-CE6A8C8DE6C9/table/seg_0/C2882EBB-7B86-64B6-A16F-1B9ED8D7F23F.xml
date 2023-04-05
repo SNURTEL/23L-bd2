@@ -1,0 +1,59 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C2882EBB-7B86-64B6-A16F-1B9ED8D7F23F" name="EMPLOYEE_POSITION">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 15:25:17 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<ordsAlias>table_11</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="50CDDBF6-13BF-7F46-FB0C-62B1F18F4FA1">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 15:25:59 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="position_name" id="BB2BB16A-1698-EEDB-A3F4-F923B9B6C1C0">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 15:26:38 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="description" id="D55318CD-44A2-EF3E-7BB8-51086A289E6B">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 15:27:05 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0C0FF55A-8E1B-2BB9-CF13-B7835801AD2C" name="EMPLOYEE_POSITION_PK">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 15:28:21 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="50CDDBF6-13BF-7F46-FB0C-62B1F18F4FA1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

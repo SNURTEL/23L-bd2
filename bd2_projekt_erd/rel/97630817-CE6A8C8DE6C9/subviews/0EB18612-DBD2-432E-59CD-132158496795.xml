@@ -14,9 +14,20 @@
 <display>false</display>
 <notation>1</notation>
 <objectViews>
+<OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="0F8BADF1-500A-03AC-9F28-6F085B6D047F" otype="Table" vid="EF1F50A4-E070-865C-976B-E048E459BE8A">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="1280" y="670" width="240" height="164"/>
+</OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="1C0BDABE-FB17-1A84-723A-99AF631D72DB" otype="Table" vid="FB073B41-2BE5-BBF7-F366-A01CFE85B248">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <bounds x="730" y="600" width="271" height="131"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.TVNote" oid="209D5029-061F-598E-3F11-4BAA807E686D" otype="Note" vid="57726D37-889E-42B2-A465-06DFE8E9746E">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="1070" y="570" width="157" height="107"/>
+<comment>klient może mieć tylko jedno prawo jazdy,
+w modelu logicznym trzeba zmienić dodać
+&apos;UNIQUE&apos; do kolumny CUSTOMER_DRIVIND_LICENCE_FK</comment>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="3171EF08-5A43-2F04-B15A-0C2703242289" otype="Table" vid="4A7EA9CB-D27A-EC98-80B7-EC2663A4F2BB">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -30,6 +41,10 @@
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <bounds x="560" y="210" width="304" height="113"/>
 </OView>
+<OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="5A3841B6-C15D-48DE-04FF-11E1F4C0C2F3" otype="Table" vid="240BF1FE-83C8-8D48-B418-5E8EF23F3DFF">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="1450" y="140" width="321" height="171"/>
+</OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="8EE47467-AB23-41FF-03C3-49743791094E" otype="Table" vid="94876C61-1A27-43BD-0DB5-AAD097987518">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <bounds x="230" y="760" width="210" height="109"/>
@@ -41,6 +56,10 @@
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="C2243F49-2D06-A1EA-7282-CCD71D04ECA7" otype="Table" vid="747EFFDF-18A9-24F5-F5E4-C99FA02008C1">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <bounds x="490" y="380" width="241" height="121"/>
+</OView>
+<OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="C2882EBB-7B86-64B6-A16F-1B9ED8D7F23F" otype="Table" vid="64ABCA24-9D17-23A1-4413-6806E313C9CB">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<bounds x="1450" y="400" width="351" height="174"/>
 </OView>
 <OView class="oracle.dbtools.crest.swingui.relational.TVTable" oid="D270173E-0894-5468-F444-7B0484DA3154" otype="Table" vid="53BDCC76-3756-ADC9-5B2D-1A30D8B249C7">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
@@ -56,6 +75,15 @@
 </OView>
 </objectViews>
 <connectors>
+<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="084641D3-ED5F-B696-69FD-437FC0EF992E" otype="FKIndexAssociation" vid_source="64ABCA24-9D17-23A1-4413-6806E313C9CB" vid_target="240BF1FE-83C8-8D48-B418-5E8EF23F3DFF">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="1610" y="400"/>
+<point x="1610" y="311"/>
+</points>
+</Connector>
 <Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="137EEF7F-CD27-8B05-6178-7ABEEC621DD7" otype="FKIndexAssociation" vid_source="94876C61-1A27-43BD-0DB5-AAD097987518" vid_target="2AC6A9E1-2A5F-7466-8BF1-7E36C57E3385">
 <hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
 <backgroundColor>-16777216</backgroundColor>
@@ -63,6 +91,15 @@
 <points>
 <point x="270" y="760"/>
 <point x="270" y="651"/>
+</points>
+</Connector>
+<Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="21322665-291D-EEC8-2966-5BDE003C8D84" otype="FKIndexAssociation" vid_source="EF1F50A4-E070-865C-976B-E048E459BE8A" vid_target="FB073B41-2BE5-BBF7-F366-A01CFE85B248">
+<hideElementsInCurrentOnly>false</hideElementsInCurrentOnly>
+<backgroundColor>-16777216</backgroundColor>
+<lineWidth>1</lineWidth>
+<points>
+<point x="1280" y="700"/>
+<point x="1001" y="700"/>
 </points>
 </Connector>
 <Connector class="oracle.dbtools.crest.swingui.relational.TVFKRelation" oid="6065F566-30AB-A719-C20A-4B88C5767366" otype="FKIndexAssociation" vid_source="A6607180-390B-E626-BB9F-341A7B7597C1" vid_target="4A7EA9CB-D27A-EC98-80B7-EC2663A4F2BB">

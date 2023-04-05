@@ -1,16 +1,16 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="1C0BDABE-FB17-1A84-723A-99AF631D72DB" name="CUSTOMER">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 15:36:18 UTC</createdTime>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="5A3841B6-C15D-48DE-04FF-11E1F4C0C2F3" name="EMPLOYEE">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 15:27:48 UTC</createdTime>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<ordsAlias>table_8</ordsAlias>
+<ordsAlias>table_12</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="id" id="22E6FE34-6027-96A5-B59B-D1233AB2D3A3">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 15:39:06 UTC</createdTime>
+<Column name="id" id="63F8D532-11A6-3E05-8E0B-FEEC37308633">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 15:29:21 UTC</createdTime>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
@@ -18,35 +18,32 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="name" id="9AFEB710-4D32-3A7A-D8F0-E023FEAD9747">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 15:41:09 UTC</createdTime>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="surname" id="AF6BB7A6-9B66-E686-B463-C8F7AEAFD873">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 15:41:21 UTC</createdTime>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="DRIVING_LICENCE_id" id="5A3F5BB2-296A-1CA9-37DF-9A0379345E04">
+<Column name="name" id="6E26759F-259E-A6F9-37C2-F36E8176CBE7">
 <createdBy>jeremi</createdBy>
-<createdTime>2023-04-05 15:37:43 UTC</createdTime>
+<createdTime>2023-04-05 15:29:21 UTC</createdTime>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="surname" id="C7AC0D26-0100-B7AE-9053-8A46F99E9E6A">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 15:29:21 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMPLOYEE_POSITION_ID" id="026B9F9C-CB2C-278F-C5B2-4403BC43CCBB">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 15:30:20 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
@@ -54,30 +51,30 @@
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
-<colAssociation fkAssociation="21322665-291D-EEC8-2966-5BDE003C8D84" referredColumn="80C19EFC-5A3A-1524-0CAB-A58161AA781C"/>
+<colAssociation fkAssociation="084641D3-ED5F-B696-69FD-437FC0EF992E" referredColumn="50CDDBF6-13BF-7F46-FB0C-62B1F18F4FA1"/>
 </associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="BBC2556C-47FC-2CC7-6FE1-8A28AE0C62A9" name="Customer_PK">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 15:39:06 UTC</createdTime>
+<ind_PK_UK id="ACDFB6FE-FFB0-AC87-94B0-8A76BA61B0F4" name="EMPLOYEE_PK">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-05 15:29:46 UTC</createdTime>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="22E6FE34-6027-96A5-B59B-D1233AB2D3A3"/>
+<colUsage columnID="63F8D532-11A6-3E05-8E0B-FEEC37308633"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="6E3A5952-7337-8C6E-63F7-A7FD6C96BA7B" name="CUSTOMER_DRIVING_LICENCE_FK">
+<ind_PK_UK id="70A77F6A-B0E5-6BBF-88B1-1DF45D599165" name="EMPLOYEE_EMPLOYEE_POSITION_FK">
 <createdBy>jeremi</createdBy>
-<createdTime>2023-04-05 15:37:43 UTC</createdTime>
+<createdTime>2023-04-05 15:30:20 UTC</createdTime>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="5A3F5BB2-296A-1CA9-37DF-9A0379345E04"/>
+<colUsage columnID="026B9F9C-CB2C-278F-C5B2-4403BC43CCBB"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>
