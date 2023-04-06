@@ -31,7 +31,7 @@
 <colAssociation fkAssociation="96235CFD-4B92-0754-2255-6CCBED72A303" referredColumn="AA9C7C6E-0AA2-E15F-7720-07D8E47113FD"/>
 </associations>
 </Column>
-<Column name="licence_type" id="59C342B0-2B42-E509-EE29-8A57A6F97E58">
+<Column name="licence_type_required" id="59C342B0-2B42-E509-EE29-8A57A6F97E58">
 <createdBy>tomek</createdBy>
 <createdTime>2023-04-02 14:55:59 UTC</createdTime>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
