@@ -99,7 +99,6 @@
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
 <item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT015</logicalDatatype>
