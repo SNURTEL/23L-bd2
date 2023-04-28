@@ -1,8 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F828DC6E-FB1C-DF78-186E-34D190A5C205" name="INVOICE">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>D270173E-0894-5468-F444-7B0484DA3154</generatorID>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="DDE0E04B-76A6-215B-B244-D938B118637D" name="MODEL PARAMETER">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>EFBFAA17-04A7-7A40-A5C2-E53E1C4386BA</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
@@ -17,10 +17,10 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="invoice id" id="B0486BE6-E179-E7B8-EE7E-ACC0F200F8CD">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>B9BD4419-08BE-4513-3CC9-80E6C43BAC81</generatorID>
+<Attribute name="id" id="452B357B-BA79-C862-4C9D-B7C531CD8C26">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>5A923F6E-46B0-00EA-786A-627922E38CC0</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
@@ -31,86 +31,73 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="rental order id" id="4D3C263C-F38F-F42A-B793-D9CFEA4A072D">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>17CF7679-60AA-E16A-7680-AA141933C754</generatorID>
+<Attribute name="text value" id="727850CC-4CD1-B5CC-D13A-21C102486604">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>3C400D5E-CE28-7DA1-5872-741B53BB43CA</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
 <item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
 </engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="numerical value" id="B0C49450-B110-AC62-DF99-11D857466346">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>284E4723-1B87-34D3-6F24-914E32289B80</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="NIP" id="D21EB692-4407-1D86-B591-FAD10516CC72">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>8B693057-C770-1EE6-A7C5-8B210200A44D</generatorID>
+<Attribute name="MODEL id" id="0F38F983-404A-4161-2BD2-7BFC4B2217A7">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>8EB8FFB0-E7BB-9557-D76C-28841BED7CCA</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
 <item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
 </engineerTo>
+<referedAttribute>E0A70884-63DF-26A9-07CA-3BBA73DC2A41</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="customer_name" id="3A0FF990-297D-67FB-E767-8C01B7FDB28A">
+<Attribute name="PARAMETER id" id="04B3A3A6-1ED6-4A4E-D4BA-61AE337D1DE8">
 <createdBy>jeremi</createdBy>
-<createdTime>2023-04-28 17:37:09 UTC</createdTime>
-<generatorID>9AFEB710-4D32-3A7A-D8F0-E023FEAD9747</generatorID>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>25151E39-3A83-697E-24AC-8F32A9BA4908</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
 <item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
+<referedAttribute>F79E45FE-D5EC-B449-FFEE-12D73D82DB2F</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="customer_surname" id="C3A8A3FD-7AB6-BC1C-1245-9EE848F3BE56">
-<createdBy>jeremi</createdBy>
-<createdTime>2023-04-28 17:37:09 UTC</createdTime>
-<generatorID>AF6BB7A6-9B66-E686-B463-C8F7AEAFD873</generatorID>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="rental_orders" id="A052DA84-D9BB-EFB0-D8D0-A8B564EB5226">
-<createdBy>jeremi</createdBy>
-<createdTime>2023-04-28 17:37:43 UTC</createdTime>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="FEA84AB4-1297-974F-A57A-F0347390DD2B" name="INVOICE PK">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>52F5C0ED-0406-841F-70DD-8D1F5AFE6721</generatorID>
+<identifier id="EAEDF862-C5CA-016E-82ED-8631178BAA83" name="MODEL PARAMETER PK">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>6CD639E7-40CE-7296-73E0-44A456E44D17</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
@@ -118,7 +105,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>B0486BE6-E179-E7B8-EE7E-ACC0F200F8CD</attributeRef>
+<attributeRef>452B357B-BA79-C862-4C9D-B7C531CD8C26</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

@@ -9,12 +9,13 @@
 <item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
 </engineerTo>
 <sourcePk>EAA8FB5D-1999-CF2B-1AFE-C12B4FC0B388</sourcePk>
+<targetPk>361CF6FA-078F-A911-479B-2697F9EE2DEC</targetPk>
 <identifying>false</identifying>
-<optionalSource>true</optionalSource>
+<optionalSource>false</optionalSource>
 <optionalTarget>true</optionalTarget>
-<sourceCardinality>1</sourceCardinality>
+<sourceCardinality>*</sourceCardinality>
 <sourceEntity>981D7908-6DC3-2974-016C-0E3470AE5749</sourceEntity>
-<targetCardinalityString>*</targetCardinalityString>
+<targetCardinalityString>1</targetCardinalityString>
 <targetEntity>CD854D1C-070E-34AD-A588-DA39CAC03827</targetEntity>
 <transferable>true</transferable>
 <deleteRule>CASCADE</deleteRule>

@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="CUSTOMER_DRIVING_LICENCE_FK" directorySegmentName="seg_0" id="6C3689FB-181A-C2C3-8322-C2AA1CF4102C">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>21322665-291D-EEC8-2966-5BDE003C8D84</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<sourcePk>725B407E-3A1B-BA4C-2FBE-3FAC97A5E92D</sourcePk>
+<identifying>false</identifying>
+<optionalSource>true</optionalSource>
+<optionalTarget>true</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>9B83CE66-716E-16B1-5453-E903EC1446F1</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>E4DD8D5C-8FC2-0C77-067E-31E185D01E5D</targetEntity>
+<transferable>true</transferable>
+<deleteRule>CASCADE</deleteRule>
+</Relation>

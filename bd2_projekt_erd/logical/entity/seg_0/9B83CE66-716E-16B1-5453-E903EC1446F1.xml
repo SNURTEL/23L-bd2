@@ -1,8 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="F828DC6E-FB1C-DF78-186E-34D190A5C205" name="INVOICE">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>D270173E-0894-5468-F444-7B0484DA3154</generatorID>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9B83CE66-716E-16B1-5453-E903EC1446F1" name="DRIVING LICENCE">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>0F8BADF1-500A-03AC-9F28-6F085B6D047F</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
@@ -17,83 +17,54 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="invoice id" id="B0486BE6-E179-E7B8-EE7E-ACC0F200F8CD">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>B9BD4419-08BE-4513-3CC9-80E6C43BAC81</generatorID>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="rental order id" id="4D3C263C-F38F-F42A-B793-D9CFEA4A072D">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>17CF7679-60AA-E16A-7680-AA141933C754</generatorID>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="NIP" id="D21EB692-4407-1D86-B591-FAD10516CC72">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>8B693057-C770-1EE6-A7C5-8B210200A44D</generatorID>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="customer_name" id="3A0FF990-297D-67FB-E767-8C01B7FDB28A">
+<Attribute name="id" id="9A97136F-5459-D642-BF80-06D5AFD81073">
 <createdBy>jeremi</createdBy>
-<createdTime>2023-04-28 17:37:09 UTC</createdTime>
-<generatorID>9AFEB710-4D32-3A7A-D8F0-E023FEAD9747</generatorID>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>80C19EFC-5A3A-1524-0CAB-A58161AA781C</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
 <item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="drivers license number" id="102C56F0-3756-82C9-FCA8-600B85FD31C2">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>F95C4066-9174-A384-A940-9DE2B009CBF1</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>20</dataTypeSize>
 <ownDataTypeParameters>20,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="customer_surname" id="C3A8A3FD-7AB6-BC1C-1245-9EE848F3BE56">
+<Attribute name="drivers license category" id="0E330F83-B247-8177-4853-C28D8FC6D99C">
 <createdBy>jeremi</createdBy>
-<createdTime>2023-04-28 17:37:09 UTC</createdTime>
-<generatorID>AF6BB7A6-9B66-E686-B463-C8F7AEAFD873</generatorID>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>4623266D-05FC-7D19-8C60-1708D815E442</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
 <item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
 </engineerTo>
-<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>20</dataTypeSize>
-<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<dataTypeSize>ENUM(&apos;A&apos;</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;A&apos;,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="rental_orders" id="A052DA84-D9BB-EFB0-D8D0-A8B564EB5226">
+<Attribute name="valid from" id="444A6E03-3A99-440E-113D-1F798397B11D">
 <createdBy>jeremi</createdBy>
-<createdTime>2023-04-28 17:37:43 UTC</createdTime>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>61969989-AE82-5128-1BE7-C422DC93E787</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
@@ -102,15 +73,29 @@
 <nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="valid until" id="A16E3790-BF6F-B31A-D28D-CB8AF57B66CB">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>020B2AC3-9D7E-7EF8-1541-19B8FEB20D8A</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="FEA84AB4-1297-974F-A57A-F0347390DD2B" name="INVOICE PK">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>52F5C0ED-0406-841F-70DD-8D1F5AFE6721</generatorID>
+<identifier id="725B407E-3A1B-BA4C-2FBE-3FAC97A5E92D" name="DRIVING LICENCE PK">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>A4D2C6E6-A5BC-AFB2-02EB-370597DE98A4</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
@@ -118,7 +103,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>B0486BE6-E179-E7B8-EE7E-ACC0F200F8CD</attributeRef>
+<attributeRef>9A97136F-5459-D642-BF80-06D5AFD81073</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

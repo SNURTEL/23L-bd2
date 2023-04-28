@@ -73,8 +73,8 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>ENUM(&apos;awaiting&apos;,</dataTypeSize>
-<ownDataTypeParameters>ENUM(&apos;awaiting&apos;,,,</ownDataTypeParameters>
+<dataTypeSize>ENUM(&apos;awaiting&apos;</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;awaiting&apos;,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="fee rate" id="71EA79CA-39BA-AF2B-F703-8DB3CF262553">
 <createdBy>admin</createdBy>

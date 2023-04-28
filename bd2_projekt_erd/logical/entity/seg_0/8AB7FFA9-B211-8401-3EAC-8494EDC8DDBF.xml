@@ -1,8 +1,8 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="981D7908-6DC3-2974-016C-0E3470AE5749" name="TECHNICAL INSPECTION">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>C2243F49-2D06-A1EA-7282-CCD71D04ECA7</generatorID>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="8AB7FFA9-B211-8401-3EAC-8494EDC8DDBF" name="PARAMETER">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>9A03E0EC-E604-18D0-AF70-F4701F93291A</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
@@ -17,70 +17,73 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id" id="4D1BC3D2-D7B0-8733-9B40-28FB4D562911">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>4E75CC86-8C76-B9CE-53E3-9F79874B7094</generatorID>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="date" id="55F474FB-3810-7A9F-D30A-7A6E39389333">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>0C280C31-5A39-FD85-3AB4-7C4768720467</generatorID>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT008</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="ID1" id="E4007586-79FB-1DC8-027C-B6DFFC55443B">
+<Attribute name="id" id="F79E45FE-D5EC-B449-FFEE-12D73D82DB2F">
 <createdBy>jeremi</createdBy>
-<createdTime>2023-04-28 17:42:34 UTC</createdTime>
-<generatorID>3223D904-154D-01E3-ED26-E29C5969A6F9</generatorID>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>DEC2904D-DB27-333F-787F-72988A7155C0</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
 <item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
 </engineerTo>
-<referedAttribute>7F48CD92-757F-C667-00B0-3862061252EC</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="id2" id="E079ABEA-03D1-0CA8-911D-5C80CF837EEA">
+<Attribute name="name" id="FF8E7B03-C9D5-2547-DE00-8349DCED7354">
 <createdBy>jeremi</createdBy>
-<createdTime>2023-04-28 17:44:17 UTC</createdTime>
-<generatorID>36B0D757-D8C2-BD14-50BB-71AD552BA67F</generatorID>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>B9728973-7922-E2E0-DE72-CA6DE08D1C8D</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
 <item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
 </engineerTo>
-<referedAttribute>E8B24704-9464-CE3D-3989-C6ED28150E9A</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="description" id="8E8AA045-243D-CCF3-EA4D-511174D1FCB8">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>FDC5FF4D-C1B1-73AD-73BC-9DC850464234</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="type" id="00E0FFF4-79C9-7F07-9888-C1683B9E1216">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>B226DCA3-F9B2-E172-52EF-96E4DD15E8B3</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="EAA8FB5D-1999-CF2B-1AFE-C12B4FC0B388" name="TECHNICAL INSPECTION PK">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>DD6BD47B-3142-303E-AF44-562840009884</generatorID>
+<identifier id="D78F8C5B-9AE3-07DB-3F30-BBEFA60A0F26" name="PARAMETER PK">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>AF93788B-C50B-C6A0-7AF7-BF7ED4C9A602</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>
 <item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
@@ -88,7 +91,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>4D1BC3D2-D7B0-8733-9B40-28FB4D562911</attributeRef>
+<attributeRef>F79E45FE-D5EC-B449-FFEE-12D73D82DB2F</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

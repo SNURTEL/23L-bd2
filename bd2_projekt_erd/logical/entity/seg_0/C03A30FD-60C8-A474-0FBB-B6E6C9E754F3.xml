@@ -45,37 +45,6 @@
 <logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="brand id" id="630BC61F-D97A-D966-A1EC-9D4C25A3588C">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>8F871959-B422-4CE1-A82E-20B1E9CFC848</generatorID>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<referedAttribute>5DBC3D4B-2BE2-28CF-2A4A-E261D6AFBA0E</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypeScale>6</dataTypeScale>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="type id" id="158E3BE6-FF90-D46E-44DF-709E6C6A4D38">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:21 UTC</createdTime>
-<generatorID>A58FF4C7-5A1A-161A-3D4F-849633B2B218</generatorID>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<referedAttribute>EF834DDA-8AC8-DD63-757B-5407A0E79775</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="engine" id="6DBFCB8E-7D5E-E610-16E8-E2F0A391E970">
 <createdBy>admin</createdBy>
 <createdTime>2023-04-04 16:14:21 UTC</createdTime>
@@ -121,7 +90,7 @@
 <dataTypeSize>ENUM(&apos;maunal&apos;</dataTypeSize>
 <ownDataTypeParameters>ENUM(&apos;maunal&apos;,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="steats" id="57217FDC-08CA-5880-3E34-9C749CF5754C">
+<Attribute name="seats" id="57217FDC-08CA-5880-3E34-9C749CF5754C">
 <createdBy>admin</createdBy>
 <createdTime>2023-04-04 16:14:21 UTC</createdTime>
 <generatorID>863F31CC-F559-81D5-AD4F-81A113DFE5A5</generatorID>
@@ -133,6 +102,49 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="drivers license category" id="A903F2B3-9CDF-7F92-B8AF-29A666BF4838">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>1EA52DBD-2738-08A0-2E0D-00F91A048AA9</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>ENUM(&apos;A&apos;</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;A&apos;,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="car_type_name" id="B439627D-E767-24BB-F5DB-A45E0F0C11CD">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:29:23 UTC</createdTime>
+<generatorID>52D834CE-56C5-DF3C-A777-5D361114F84A</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="car_brand_name" id="4FC81ADE-FA9C-C08A-9429-26E306073380">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:30:13 UTC</createdTime>
+<generatorID>52D834CE-56C5-DF3C-A777-5D361114F84A</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

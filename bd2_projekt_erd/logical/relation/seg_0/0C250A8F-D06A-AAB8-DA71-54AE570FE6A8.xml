@@ -2,6 +2,7 @@
 <Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="RENTAL_ORDER_INVOICE_FK" directorySegmentName="seg_0" id="0C250A8F-D06A-AAB8-DA71-54AE570FE6A8">
 <createdBy>admin</createdBy>
 <createdTime>2023-04-04 16:14:21 UTC</createdTime>
+<comment><![CDATA[has]]></comment>
 <generatorID>EADD3B27-016E-5487-2972-9D8A52D2DC08</generatorID>
 <ownerDesignName>bd2_projekt_erd</ownerDesignName>
 <engineerTo>

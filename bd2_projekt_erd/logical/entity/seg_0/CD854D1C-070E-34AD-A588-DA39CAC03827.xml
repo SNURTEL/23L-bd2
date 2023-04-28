@@ -60,7 +60,7 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="licence type" id="E27376B2-CC39-79A9-BA6F-A5613B49FA04">
+<Attribute name="licence type required" id="E27376B2-CC39-79A9-BA6F-A5613B49FA04">
 <createdBy>admin</createdBy>
 <createdTime>2023-04-04 16:14:20 UTC</createdTime>
 <generatorID>59C342B0-2B42-E509-EE29-8A57A6F97E58</generatorID>
@@ -72,37 +72,6 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="has issues" id="A2430360-9CA4-E98F-80F0-02BEA7F60D1C">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:20 UTC</createdTime>
-<generatorID>005AA014-2D75-A90B-7A12-F2FBA05A5A08</generatorID>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT006</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="last inspection id" id="1B064395-9798-2301-A1E1-47E68BF3CC0D">
-<createdBy>admin</createdBy>
-<createdTime>2023-04-04 16:14:20 UTC</createdTime>
-<generatorID>36B0D757-D8C2-BD14-50BB-71AD552BA67F</generatorID>
-<ownerDesignName>bd2_projekt_erd</ownerDesignName>
-<engineerTo>
-<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
-<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
-</engineerTo>
-<nullsAllowed>true</nullsAllowed>
-<referedAttribute>4D1BC3D2-D7B0-8733-9B40-28FB4D562911</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="locationX" id="299619F9-B81B-0D9C-82D3-694D4E9FBA32">
@@ -178,6 +147,34 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="state" id="47543A2D-2135-ACDF-E9B5-619C399B23A9">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>D760502B-6C9C-D3DB-BD9A-741D6BEC8085</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="model_name" id="469E9732-24DD-18EC-97F5-CAB394027CB0">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:31:15 UTC</createdTime>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

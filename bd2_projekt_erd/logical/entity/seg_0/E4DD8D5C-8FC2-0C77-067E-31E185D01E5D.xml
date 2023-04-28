@@ -92,8 +92,24 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>ENUM(&apos;A&apos;,</dataTypeSize>
-<ownDataTypeParameters>ENUM(&apos;A&apos;,,,</ownDataTypeParameters>
+<dataTypeSize>ENUM(&apos;A&apos;</dataTypeSize>
+<ownDataTypeParameters>ENUM(&apos;A&apos;,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DRIVING LICENCE id" id="8E214B73-37A5-DF2A-C797-38FC364C92DB">
+<createdBy>jeremi</createdBy>
+<createdTime>2023-04-28 17:27:22 UTC</createdTime>
+<generatorID>6C3689FB-181A-C2C3-8322-C2AA1CF4102C</generatorID>
+<ownerDesignName>bd2_projekt_erd</ownerDesignName>
+<engineerTo>
+<item key="97630817-3739-415C-834F-CE6A8C8DE6C9" value="true"/>
+<item key="E024E397-D919-6CE3-2D30-9D9E2CCD3908" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>9A97136F-5459-D642-BF80-06D5AFD81073</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
