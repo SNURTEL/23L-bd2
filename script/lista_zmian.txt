@@ -1,0 +1,9 @@
+1) Usunąłem kolumnę location_id z tabeli CAR, ponieważ są już w tej samej encji kolumny locationX i locationY.
+
+2) Usunąłem z z tabeli samochód kolumnę customerID. (po co ta kolumna tam wgl była, nie była nawet połączona z żadną tabelą).
+
+3)Samochód może być powiązany tylko z jednym ubezpieczeniem, a bezpieczenie tylko z jednym samochodem (1-1). W naszym modelu logicznym był to związek 1-N, zmieniłem go więc na związek 1-1. Usunąłem z tabeli CAR kolumnę insurance_id, a z tabeli INSURANCE usunałem kolumnę ID. Do tabeli INSURANCE dodałem kolumnę car_id, która jest w tej tabeli jednocześnie kluczem głównym jak i kluczem obcym odwołującym się do tabeli CAR.
+
+4)Samochód może być powiązany tylko z jednym certyfikatem rejestracji, a rejesrtacja tylko z jednym samochodem (1-1). W naszym modelu logicznym był to związek 1-N, zmieniłem go więc na związek 1-1. Usunąłem z tabeli CAR kolumnę registraion_certificate_id, a z tabeli REGISTRATION_CERTIFICATE usunałem kolumnę ID. Do tabeli REGISTRATION_CERTIFICATE dodałem kolumnę car_id, która jest w tej tabeli jednocześnie kluczem głównym jak i kluczem obcym odwołującym się do tabeli CAR.
+
+5)Związek customer - driving licence zrealizowany jest tak samo jak dwa powyższe, w tabeli driving licence jest kolumna customer_id która jest jednocześnie kluczem obcym i kluczem głównym.
