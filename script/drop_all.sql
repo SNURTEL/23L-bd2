@@ -1,0 +1,15 @@
+DROP TABLE rental_order;
+DROP TABLE invoice;
+DROP TABLE technical_inspection;
+DROP TABLE registration_certificate;
+DROP TABLE insurance;
+DROP TABLE model_parameter;
+DROP TABLE parameter;
+DROP TABLE driving_licence;
+DROP TABLE employee;
+DROP TABLE employee_position;
+DROP TABLE customer;
+DROP TABLE car;
+DROP TABLE model;
+DROP TABLE car_type;
+DROP TABLE brand;
