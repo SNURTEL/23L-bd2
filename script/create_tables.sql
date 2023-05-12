@@ -13,10 +13,9 @@ CREATE TABLE car (
     has_issues                  int NOT NULL,
     locationx                   double NOT NULL,
     locationy                   double NOT NULL,
-    state                       int NOT NULL
+    state                       ENUM('available', 'rented', 'issues', 'decommissioned') NOT NULL
 );
 ALTER TABLE car ADD CONSTRAINT car_pk PRIMARY KEY ( id );
-
 
 CREATE TABLE car_type (
     id   int NOT NULL,
@@ -74,7 +73,7 @@ CREATE TABLE invoice (
     invoice_id      int NOT NULL,
     total 			double NOT NULL,
     nip             int NOT NULL,
-    custmer_name    VARCHAR(20),
+    customer_name    VARCHAR(20),
     customer_surname  VARCHAR(20),
     rental_orders     VARCHAR(500)
 );
@@ -85,13 +84,13 @@ CREATE TABLE model
     (
     id                       int NOT NULL,
     name                     VARCHAR(20) NOT NULL,
-    engine		     int,
-    drive_type               int,
-    transmission             int NOT NULL,
+    engine		             ENUM('combustion', 'electric') NOT NULL,
+    drive_type               ENUM('fwd', 'rwd', 'awd') NOT NULL,
+    transmission             ENUM ('manual', 'automatic'),
     seats                    int NOT NULL,
     licence_type_required ENUM('M', 'A', 'B1', 'B', 'C1', 'C', 'D1', 'D', 'BE', 'C1E', 'CE', 'D1E', 'DE', 'T', 'F') NOT NULL,
     car_brand_name           VARCHAR(50) NOT NULL,
-    car_model_name           VARCHAR(50) NOT NULL)
+    car_type_name           VARCHAR(50) NOT NULL)
 ;
 ALTER TABLE model ADD CONSTRAINT model_pk PRIMARY KEY ( id );
 
@@ -127,7 +126,7 @@ ALTER TABLE registration_certificate ADD CONSTRAINT registration_certificate_pk 
 CREATE TABLE rental_order 
     (
     id          int NOT NULL,
-    state       int  NOT NULL,
+    is_finished bool NOT NULL,
     fee_rate    int  NOT NULL,
     start_date_time TIMESTAMP, 
     end_date_time TIMESTAMP,
@@ -209,4 +208,7 @@ ALTER TABLE technical_inspection
     ADD CONSTRAINT technical_inspection_car_fk FOREIGN KEY ( car_id )
         REFERENCES car ( id )
             ON DELETE CASCADE ON UPDATE CASCADE;
+           
+-- ------------------------------------------------------------------
+
 
