@@ -12,6 +12,7 @@ faker = "^18.7.0"
 sqlalchemy = "^2.0.13"
 mysqlclient = "^2.1.1"
 pandas = "^2.0.1"
+python-dateutil = "^2.8.2"
 
 
 [build-system]
