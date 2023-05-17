@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import sql
 
 DB_CONFIG_FILE = "config.json"  # Ignored by git!
-INSERT_DRY_RUN = True
+INSERT_DRY_RUN = False
 
 DATE_FORMAT = "%Y-%m-%d"
 
