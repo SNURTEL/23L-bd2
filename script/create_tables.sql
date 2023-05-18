@@ -199,8 +199,8 @@ ALTER TABLE rental_order
             ON DELETE CASCADE ON UPDATE CASCADE;
            
 ALTER TABLE technical_inspection
-    ADD CONSTRAINT technical_inspection_employee_position_fk FOREIGN KEY ( mechanic_id )
-        REFERENCES employee_position ( id )
+    ADD CONSTRAINT technical_inspection_employee_fk FOREIGN KEY ( mechanic_id )
+        REFERENCES employee ( id )
             ON DELETE CASCADE ON UPDATE CASCADE;
 
 ALTER TABLE technical_inspection
