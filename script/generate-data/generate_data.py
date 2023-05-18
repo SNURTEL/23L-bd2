@@ -128,7 +128,7 @@ cars = pd.DataFrame(
     )],
     columns=['id', 'model_id', 'model_name', 'licence_type_required', 'has_issues', 'locationx', 'locationy', 'state']
 )
-# append_to_df('car', cars)  # TODO wait until model table is done
+append_to_df('car', cars)  # TODO Works only on dry run! wait until model table is done
 
 registration_certificate = pd.DataFrame(
     [(car_id,
