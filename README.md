@@ -118,10 +118,10 @@ Bazę danych postawimy na Infinite Free, używając silnika MySQL. Aplikacja zos
 ![](https://gitlab-stud.elka.pw.edu.pl/towienko/23l-bd2-projekt/-/raw/master/script/diagram.png)
 
 ### Implementacja bazy danych (skrypty)
-Folder 'script'
+Folder `script`
 
 ### Wygenerowanie danych testowych
-Folder 'script/generate-data'
+Folder `script/generate-data`
 
 ### Scenariusze testów
 [Plik pdf](<link>)
