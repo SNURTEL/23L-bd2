@@ -1,8 +1,7 @@
 CREATE TABLE brand (
-    id   int NOT NULL,
-    name VARCHAR(50) NOT NULL
+    name VARCHAR(50) NOT NULL UNIQUE
 );
-ALTER TABLE brand ADD CONSTRAINT brand_pk PRIMARY KEY ( id );
+ALTER TABLE brand ADD CONSTRAINT brand_pk PRIMARY KEY ( name );
 
 
 CREATE TABLE car (
@@ -18,10 +17,9 @@ CREATE TABLE car (
 ALTER TABLE car ADD CONSTRAINT car_pk PRIMARY KEY ( id );
 
 CREATE TABLE car_type (
-    id   int NOT NULL,
-    name VARCHAR(50) NOT NULL
+    name VARCHAR(50) NOT NULL UNIQUE
 );
-ALTER TABLE car_type ADD CONSTRAINT car_type_pk PRIMARY KEY ( id );
+ALTER TABLE car_type ADD CONSTRAINT car_type_pk PRIMARY KEY (name);
 
 
 CREATE TABLE customer (
@@ -84,10 +82,6 @@ CREATE TABLE model
     (
     id                       int NOT NULL,
     name                     VARCHAR(20) NOT NULL,
-    engine		             ENUM('combustion', 'electric') NOT NULL,
-    drive_type               ENUM('fwd', 'rwd', 'awd') NOT NULL,
-    transmission             ENUM ('manual', 'automatic'),
-    seats                    int NOT NULL,
     licence_type_required ENUM('M', 'A', 'B1', 'B', 'C1', 'C', 'D1', 'D', 'BE', 'C1E', 'CE', 'D1E', 'DE', 'T', 'F') NOT NULL,
     car_brand_name           VARCHAR(50) NOT NULL,
     car_type_name           VARCHAR(50) NOT NULL)

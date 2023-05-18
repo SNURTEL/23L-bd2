@@ -1,14 +1,14 @@
-INSERT INTO brand (id, name) VALUES(1, 'audi');
-INSERT INTO car_type (id, name) VALUES(1, 'small');
-INSERT INTO model (id, name, engine, drive_type, transmission, seats, licence_type_required, car_brand_name, car_type_name)
-	VALUES (1, 'audi a4', 'electric', 'fwd', 'manual', 5, 'B1', 'audi', 'small'); -- this works OK
+INSERT INTO brand (name) VALUES('audi');
+INSERT INTO car_type (name) VALUES('small');
+INSERT INTO model (id, name, licence_type_required, car_brand_name, car_type_name)
+	VALUES (1, 'audi a4', 'B1', 'audi', 'small'); -- this works OK
 	
-INSERT INTO model (id, name, engine, drive_type, transmission, seats, licence_type_required, car_brand_name, car_type_name)
-	VALUES (2, 'audi a5', 'electric', 'fwd', 'manual', 5, 'B1', 'audi', 'big'); -- this don't works,
+INSERT INTO model (id, name, licence_type_required, car_brand_name, car_type_name)
+	VALUES (2, 'audi a5', 'B1', 'audi', 'big'); -- this don't works,
 -- above doesnt' work: 'Cannot insert. In table car_type there is no type named: big' OK
 
-INSERT INTO model (id, name, engine, drive_type, transmission, seats, licence_type_required, car_brand_name, car_type_name)
-	VALUES (3, 'audi a5', 'electric', 'fwd', 'manual', 5, 'B1', 'toyota', 'small'); -- this don't works,
+INSERT INTO model (id,licence_type_required, car_brand_name, car_type_name)
+	VALUES (3,  'B1', 'toyota', 'small'); -- this don't works,
 -- above doesnt' work: 'Cannot insert. In table brand there is no brand named: toyota' OK
 
 INSERT INTO car (id, model_id, model_name, licence_type_required, has_issues, locationx, locationy, state)
