@@ -25,7 +25,10 @@ ALTER TABLE car_type ADD CONSTRAINT car_type_pk PRIMARY KEY (name);
 CREATE TABLE customer (
     id                 int NOT NULL,
     name               VARCHAR(20),
-    surname            VARCHAR(20)
+    surname            VARCHAR(20),
+    email       	   VARCHAR(50) NOT NULL UNIQUE,
+    password_hash      CHAR(128) # sha128 
+    
 );
 ALTER TABLE customer ADD CONSTRAINT customer_pk PRIMARY KEY ( id );
 
@@ -46,7 +49,9 @@ CREATE TABLE employee (
     id                   int NOT NULL,
     name                 VARCHAR(20) NOT NULL,
     surname              VARCHAR(20) NOT NULL,
-    employee_position_id int NOT NULL
+    employee_position_id int NOT NULL,
+    email       	   VARCHAR(50) UNIQUE NOT NULL,
+    password_hash      CHAR(128) # sha128
 );
 ALTER TABLE employee ADD CONSTRAINT employee_pk PRIMARY KEY ( id );
 
