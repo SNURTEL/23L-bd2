@@ -51,6 +51,10 @@ def append_to_df(name: str, new_lines: pd.DataFrame) -> None:
 
 fake = faker.Faker('pl_PL')
 
+############################
+# employee positions
+############################
+
 employee_positions = pd.DataFrame([
     [0, 'mechanic', 'maintains vehicles'],
     [1, 'admin', 'keeps the system running']
