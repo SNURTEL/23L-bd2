@@ -82,7 +82,7 @@ append_to_df('employee', employees)
 ############################
 
 customers = pd.DataFrame(
-    [(i, fake.first_name(), fake.last_name(), fake.ascii_email(), 'tmphash') for i in range(3000)],
+    [(i, fake.first_name(), fake.last_name(), fake.ascii_email(), 'tmphash') for i in range(30)],
     columns=['id', 'name', 'surname', 'email', 'password_hash']
 )
 append_to_df('customer', customers)
