@@ -61,6 +61,10 @@ employee_positions = pd.DataFrame([
 ], columns=['id', 'position_name', 'description'])
 append_to_df('employee_position', employee_positions)
 
+############################
+# employees
+############################
+
 employees = pd.DataFrame(
     [(i, fake.first_name(), fake.last_name(), 0) for i in range(17)] + [(i, fake.first_name(), fake.last_name(), 1)
                                                                         for i in range(17, 20, 1)],
@@ -68,11 +72,19 @@ employees = pd.DataFrame(
 )
 append_to_df('employee', employees)
 
+############################
+# customers
+############################
+
 customers = pd.DataFrame(
     [(i, fake.first_name(), fake.last_name()) for i in range(3000)],
     columns=['id', 'name', 'surname']
 )
 append_to_df('customer', customers)
+
+############################
+# driving licences
+############################
 
 fake_drv_lic_number = lambda: f"{fake.random.randint(0, 9999):04}/{fake.random.randint(0, 99):02}/{fake.random.randint(0, 9999):04}"
 fake_drv_lic = lambda category, number: pd.DataFrame(
