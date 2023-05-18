@@ -71,9 +71,9 @@ append_to_df('employee_position', employee_positions)
 ############################
 
 employees = pd.DataFrame(
-    [(i, fake.first_name(), fake.last_name(), 0) for i in range(17)] + [(i, fake.first_name(), fake.last_name(), 1)
-                                                                        for i in range(17, 20, 1)],
-    columns=['id', 'name', 'surname', 'employee_position_id']
+    [(i, fake.first_name(), fake.last_name(), 0, fake.ascii_email(), 'tmphash') for i in range(17)] + 
+    [(i, fake.first_name(), fake.last_name(), 1, fake.ascii_email(), 'tmphash') for i in range(17, 20, 1)],
+    columns=['id', 'name', 'surname', 'employee_position_id', 'email', 'password_hash']
 )
 append_to_df('employee', employees)
 
@@ -82,8 +82,8 @@ append_to_df('employee', employees)
 ############################
 
 customers = pd.DataFrame(
-    [(i, fake.first_name(), fake.last_name()) for i in range(3000)],
-    columns=['id', 'name', 'surname']
+    [(i, fake.first_name(), fake.last_name(), fake.ascii_email(), 'tmphash') for i in range(3000)],
+    columns=['id', 'name', 'surname', 'email', 'password_hash']
 )
 append_to_df('customer', customers)
 
@@ -204,24 +204,16 @@ append_to_df('driving_licence', driving_licences)
 # cars
 ############################
 
-models_with_id = [  # TODO replace with actual data
-    (10001, 'Volkswagen Golf'),
-    (10002, 'Hyundai i20'),
-    (10003, 'Toyota Yaris'),
-    (10004, 'Ford Mondeo')
-]
-
 loc_center_x, loc_center_y, loc_radius = 52.240237, 21.032048, 0.118085334
 cars = pd.DataFrame(
-    [(
-        i,
-        *random.choice(models_with_id),
+    [(  i,
+        random.choice(model['id'].to_list()),
         'B',
         has_issues,  # FIXME REDUNDANT COLUMN!
         loc_center_x + r * math.cos(theta),
         loc_center_y + r * math.sin(theta),
-        random.choices(['available', 'rented', 'decommissioned'], weights=[0.6, 0.35, 0.05])[
-            0] if not has_issues else 'issues'
+        random.choices(['available', 'rented', 'decommissioned'], weights=[0.6, 0.35, 0.05])[0],
+        'free'
     ) for i, (r, theta), has_issues in zip(
         range(50),
         # this draws uniformly distributed points from a circle
