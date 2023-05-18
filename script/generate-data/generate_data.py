@@ -14,7 +14,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import sql
 
 DB_CONFIG_FILE = "config.json"  # Ignored by git!
-INSERT_DRY_RUN = False
+INSERT_DRY_RUN = True
 
 DATE_FORMAT = "%Y-%m-%d"
 
@@ -130,6 +130,39 @@ cars = pd.DataFrame(
 )
 # append_to_df('car', cars)  # TODO wait until model table is done
 
+registration_certificate = pd.DataFrame(
+    [(car_id,
+      fake.date_between(datetime.date(2022, 5, 16), datetime.date(2023, 5, 16)).strftime(DATE_FORMAT),
+      None) for car_id in cars['id']],
+    columns=['car_id', 'start_date', 'end_date']
+)
+append_to_df('registration_certificate', registration_certificate)
+
+insurance = pd.DataFrame(
+    [(car_id,
+      start_d.strftime(DATE_FORMAT),
+      (start_d + dateutil.relativedelta.relativedelta(years=1)).strftime(DATE_FORMAT))
+     for car_id, start_d in zip(cars['id'],
+                                [fake.date_between(datetime.date(2022, 5, 16), datetime.date(2023, 5, 16)) for _ in
+                                 range(len(cars['id']))])],
+    columns=['car_id', 'start_date', 'end_date']
+)
+append_to_df('insurance', insurance)
+
+technical_inspection = pd.DataFrame(
+    [(
+        i,
+        date,
+        mechanic,
+        car
+    ) for i, (date, mechanic, car) in enumerate(zip(
+        sorted(fake.date_between(datetime.date(2013, 5, 16), datetime.date(2023, 5, 16)) for _ in range(500)),
+        employees[employees['employee_position_id'] == 0]['id'].sample(500, replace=True),
+        cars['id'].sample(500, replace=True)
+    ))], columns=['id', 'date', 'mechanic_id', 'car_id']
+)
+append_to_df('technical_inspection', technical_inspection)
+
 print(" INSERT ".center(60, '='))
 
 insert_order = [
@@ -151,10 +184,10 @@ insert_order = [
 ]
 assert set(insert_order) == set(dfs.keys())
 
-for tale_name in insert_order:
-    df = dfs[tale_name]
-    print(f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}INSERT to \"{tale_name}\"", end=' ')
-    aff_rows = df.to_sql(name=tale_name,
+for table_name in insert_order:
+    df = dfs[table_name]
+    print(f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}INSERT to \"{table_name}\"", end=' ')
+    aff_rows = df.to_sql(name=table_name,
                          con=engine,
                          if_exists='append',
                          index=False,
