@@ -1,5 +1,8 @@
 import json
 import datetime
+import math
+import random
+
 import dateutil
 from types import SimpleNamespace
 
@@ -11,7 +14,9 @@ from sqlalchemy.orm import Session
 from sqlalchemy import sql
 
 DB_CONFIG_FILE = "config.json"  # Ignored by git!
-INSERT_DRY_RUN = True
+INSERT_DRY_RUN = False
+
+DATE_FORMAT = "%Y-%m-%d"
 
 # TODO extract magic numbers
 # TODO generate remaining data
@@ -28,7 +33,7 @@ db_url = URL.create(
     password=DB_CONFIG.db_password,
     host=DB_CONFIG.db_host,
     database=DB_CONFIG.db_database,
-    port=DB_CONFIG.db_port
+    port=DB_CONFIG.db_port,
 )
 engine = create_engine(db_url)
 session = Session(engine)
@@ -71,34 +76,91 @@ customers = pd.DataFrame(
 append_to_df('customer', customers)
 
 fake_drv_lic_number = lambda: f"{fake.random.randint(0, 9999):04}/{fake.random.randint(0, 99):02}/{fake.random.randint(0, 9999):04}"
-fake_drv_lic = lambda category, number: pd.DataFrame(
-    [(customer_id,
-      fake_drv_lic_number(),
-      category,
-      start_d.strftime("%d.%m.%Y"),
-      (start_d + dateutil.relativedelta.relativedelta(years=15)).strftime("%d.%m.%Y"))
-     for customer_id, start_d in zip(
-        customers.sample(number)['id'].sort_values(),
-        [fake.date_between(datetime.date(2008, 2, 21), datetime.date(2023, 5, 16)) for _ in range(number)])],
-    columns=['customer_id', 'drivers_license_number', 'drivers_license_category', 'valid_from', 'valid_until']
-)
+
+
+def fake_drv_lic(category, id):
+    start_d = fake.date_between(datetime.date(2008, 2, 21), datetime.date(2023, 5, 16))
+    return (id,
+            fake_drv_lic_number(),
+            category,
+            start_d.strftime(DATE_FORMAT),
+            (start_d + dateutil.relativedelta.relativedelta(years=15)).strftime(DATE_FORMAT))
+
+
+drv_lic_columns = ['customer_id', 'drivers_license_number', 'drivers_license_category', 'valid_from', 'valid_until']
+
+# FIXME no info on whether only automatic transmission is allowed
 driving_licences = pd.concat([
-    fake_drv_lic('B', int(3000 * 0.98)),
-    pd.concat([fake_drv_lic(cat, int(3000 * 0.03)) for cat in ('A', 'BE', 'C')]),
-    pd.concat([fake_drv_lic(cat, int(3000 * 0.001)) for cat in
-               ('M', 'B1', 'C1', 'D1', 'D', 'C1E', 'CE', 'D1E', 'DE', 'T', 'F')])
+    pd.DataFrame([fake_drv_lic('B', customer_id) for customer_id in customers['id'][:2800]], columns=drv_lic_columns),
+    pd.DataFrame([fake_drv_lic(category, customer_id) for category, customer_id in
+                  zip(random.choices(('A', 'BE', 'C'), k=170), customers['id'][2800:2970])], columns=drv_lic_columns),
+    pd.DataFrame([fake_drv_lic(category, customer_id) for category, customer_id in
+                  zip(random.choices(('M', 'B1', 'C1', 'D1', 'D', 'C1E', 'CE', 'D1E', 'DE', 'T', 'F'), k=30),
+                      customers['id'][2970:])], columns=drv_lic_columns),
 ])
 append_to_df('driving_licence', driving_licences)
 
+# cars
+models_with_id = [  # TODO replace with actual data
+    (10001, 'Volkswagen Golf'),
+    (10002, 'Hyundai i20'),
+    (10003, 'Toyota Yaris'),
+    (10004, 'Ford Mondeo')
+]
+
+loc_center_x, loc_center_y, loc_radius = 52.240237, 21.032048, 0.118085334
+cars = pd.DataFrame(
+    [(
+        i,
+        *random.choice(models_with_id),
+        'B',
+        has_issues,  # FIXME REDUNDANT COLUMN!
+        loc_center_x + r * math.cos(theta),
+        loc_center_y + r * math.sin(theta),
+        random.choices(['available', 'rented', 'decommissioned'], weights=[0.6, 0.35, 0.05])[
+            0] if not has_issues else 'issues'
+    ) for i, (r, theta), has_issues in zip(
+        range(50),
+        # this draws uniformly distributed points from a circle
+        [[math.sqrt(random.random() * loc_radius) * math.sqrt(loc_radius), 2 * math.pi * random.random()] for _ in
+         range(50)],
+        random.choices([0, 1], weights=[0.92, 0.08], k=50)
+    )],
+    columns=['id', 'model_id', 'model_name', 'licence_type_required', 'has_issues', 'locationx', 'locationy', 'state']
+)
+# append_to_df('car', cars)  # TODO wait until model table is done
+
 print(" INSERT ".center(60, '='))
 
-for name, df in dfs.items():
-    aff_rows = df.to_sql(name=name,
+insert_order = [
+    'employee_position',
+    'employee',
+    'customer',
+    'driving_licence',
+    'brand',
+    'car_type',
+    'model',
+    'parameter',
+    'model_parameter',
+    'car',
+    'technical_inspection',
+    'registration_certificate',
+    'insurance',
+    'invoice',
+    'rental_order'
+]
+assert set(insert_order) == set(dfs.keys())
+
+for tale_name in insert_order:
+    df = dfs[tale_name]
+    print(f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}INSERT to \"{tale_name}\"", end=' ')
+    aff_rows = df.to_sql(name=tale_name,
                          con=engine,
                          if_exists='append',
                          index=False,
+                         chunksize=None,
                          method='multi' if not INSERT_DRY_RUN else lambda pd_table, conn, keys, data_iter: len(
                              list(data_iter)))
-    print(f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}INSERT to \"{name}\" affected {aff_rows} rows")
+    print(f"affected {aff_rows} rows")
 
 print(" END ".center(60, '='))
