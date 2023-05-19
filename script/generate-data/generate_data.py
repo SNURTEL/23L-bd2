@@ -15,7 +15,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import sql
 
 DB_CONFIG_FILE = "config.json"  # Ignored by git!
-INSERT_DRY_RUN = False
+INSERT_DRY_RUN = True
 
 DATE_FORMAT = "%Y-%m-%d"
 
@@ -214,25 +214,27 @@ append_to_df('driving_licence', driving_licences)
 ############################
 
 loc_center_x, loc_center_y, loc_radius = 52.240237, 21.032048, 0.118085334
-cars = pd.DataFrame(
-    [(i,
-      random.choice(model['id'].to_list()),
-      'B',
-      has_issues,  # FIXME REDUNDANT COLUMN!
+sampled_models = model.sample(n=50, replace=True)
+
+cars = pd.concat([
+    pd.DataFrame(range(50)),
+    sampled_models.reset_index()['id'],
+    sampled_models.reset_index()['name'],
+    pd.DataFrame(
+    [('B',
+      has_issues,
       loc_center_x + r * math.cos(theta),
       loc_center_y + r * math.sin(theta),
       random.choices(['available', 'decommissioned'], weights=[0.95, 0.05])[
-          # random.choices(['available', 'rented', 'decommissioned'], weights=[0.6, 0.35, 0.05])[
           0] if not has_issues else 'issues'
       ) for i, (r, theta), has_issues in zip(
         range(50),
-        # this draws uniformly distributed points from a circle
         [[math.sqrt(random.random() * loc_radius) * math.sqrt(loc_radius), 2 * math.pi * random.random()] for _ in
          range(50)],
         random.choices([0, 1], weights=[0.92, 0.08], k=50)
-    )],
-    columns=['id', 'model_id', 'model_name', 'licence_type_required', 'has_issues', 'locationx', 'locationy', 'state']
-)
+    )])
+], axis=1)
+cars.columns = ['id', 'model_id', 'model_name', 'licence_type_required', 'has_issues', 'locationx', 'locationy', 'state']
 append_to_df('car', cars)  # TODO Works only on dry run! wait until model table is done
 
 ############################
