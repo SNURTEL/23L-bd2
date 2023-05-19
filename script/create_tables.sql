@@ -75,7 +75,7 @@ ALTER TABLE insurance ADD CONSTRAINT insurance_pk PRIMARY KEY ( car_id );
 CREATE TABLE invoice (
     invoice_id      int NOT NULL,
     total 			double NOT NULL,
-    nip             int NOT NULL,
+    nip             bigint NOT NULL,  -- ( NIP nie mieści się w zakresie inta
     customer_name    VARCHAR(20),
     customer_surname  VARCHAR(20),
     rental_orders     VARCHAR(500)
@@ -117,7 +117,7 @@ ALTER TABLE parameter ADD CONSTRAINT parameter_pk PRIMARY KEY ( id );
 CREATE TABLE registration_certificate (
     car_id         int NOT NULL,
     start_date DATE NOT NULL,
-    end_date   DATE NOT NULL
+    end_date   DATE -- ( błąd w oryginalnym schemacie - dowód rejestracyjny prawie nigdy nie ma teerminu ważności
 );
 ALTER TABLE registration_certificate ADD CONSTRAINT registration_certificate_pk PRIMARY KEY ( car_id );
 

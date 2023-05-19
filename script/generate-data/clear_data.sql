@@ -1,0 +1,15 @@
+delete from rental_order;
+delete from invoice;
+delete from insurance;
+delete from registration_certificate;
+delete from technical_inspection;
+delete from car;
+delete from model_parameter;
+delete from model;
+delete from parameter;
+delete from car_type;
+delete from brand;
+delete from driving_licence;
+delete from customer;
+delete from employee_position;
+delete from employee_position;
