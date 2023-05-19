@@ -15,11 +15,15 @@ from sqlalchemy.orm import Session
 from sqlalchemy import sql
 
 DB_CONFIG_FILE = "config.json"  # Ignored by git!
-INSERT_DRY_RUN = True
+INSERT_DRY_RUN = False
 
 DATE_FORMAT = "%Y-%m-%d"
 
+
+
 print(" PREP ".center(60, '='))
+if INSERT_DRY_RUN:
+    print(u"\u001b[32m" + "DRY RUN ENABLED!".center(60, '=') + u"\u001b[0m")
 print('Query DB to validate schema...')
 
 with open(DB_CONFIG_FILE, mode='r') as fp:
@@ -69,7 +73,7 @@ append_to_df('employee_position', employee_positions)
 ############################
 
 employees = pd.DataFrame(
-    [(i, name, surname, 0,
+    [(i, name.lower(), surname.lower(), 0,
       f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
       ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
      enumerate(((fake.first_name(), fake.last_name()) for _ in range(17)))] +
@@ -86,10 +90,13 @@ append_to_df('employee', employees)
 ############################
 
 customers = pd.DataFrame(
-    [(i, name, surname,
+    [(i, name.lower(), surname.lower(),
       f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
       ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
-     enumerate(((fake.first_name(), fake.last_name()) for _ in range(3000)))],
+     enumerate(((fake.first_name(), fake.last_name()) for _ in range(2999)))] + \
+    [(2999, 'test', 'user', 'tuser@elka.pw.edu.pl',
+      # argon2id hash for 'super secret password', salt='bd2project'
+      '$argon2id$v=19$m=256,t=2,p=8$YmQycHJvamVjdA$cxR5EyldKIXaEIQVNaoaiao8kVvr+QyWpL5/5ugHrE6fiAUzoHsi1weCKYqiYMflfPa1OFnDFIMbfZSDDj9y')],
     columns=['id', 'name', 'surname', 'email', 'password_hash']
 )
 append_to_df('customer', customers)
@@ -98,7 +105,7 @@ append_to_df('customer', customers)
 # car types
 ############################
 
-car_type = pd.DataFrame(['Hatchback', 'Kombi', 'Sedan', 'Liftback', 'Van', 'SUV', 'Crossover', 'Coupe'],
+car_type = pd.DataFrame(['hatchback', 'kombi', 'sedan', 'liftback', 'van', 'suv', 'crossover', 'coupe'],
                         columns=['name'])
 append_to_df('car_type', car_type)
 
@@ -106,12 +113,12 @@ append_to_df('car_type', car_type)
 # brands
 ############################
 
-brand = pd.DataFrame(['Toyota', 'Volkswagen', 'Ford', 'Honda', 'Nissan', 'Hyundai', 'Chevrolet', 'Kia',
-                      'Mercedes', 'BMW', 'Fiat', 'Opel', 'Peugeot', 'Citroen', 'Audi', 'Skoda', 'Volvo', 'Mazda',
-                      'Seat',
-                      'Suzuki', 'Mitsubishi', 'Land Rover', 'Jeep', 'Porsche', 'Alfa Romeo', 'Chrysler', 'Jaguar',
-                      'Ferrari', 'Infiniti',
-                      'Lexus', 'Dacia', 'Mini', 'Smart', 'Renault'], columns=['name'])
+brand = pd.DataFrame(['toyota', 'volkswagen', 'ford', 'honda', 'nissan', 'hyundai', 'chevrolet', 'kia',
+                      'mercedes', 'bmw', 'fiat', 'opel', 'peugeot', 'citroen', 'audi', 'skoda', 'volvo', 'mazda',
+                      'seat',
+                      'suzuki', 'mitsubishi', 'land rover', 'jeep', 'porsche', 'alfa romeo', 'chrysler', 'jaguar',
+                      'ferrari', 'infiniti',
+                      'lexus', 'dacia', 'mini', 'smart', 'renault'], columns=['name'])
 append_to_df('brand', brand)
 
 ############################
@@ -135,35 +142,35 @@ append_to_df('parameter', parameter)
 ############################
 
 model = pd.DataFrame([
-    [0, 'Astra', 'B', 'Opel', 'Hatchback'],
-    [1, '3', 'B', 'Mazda', 'Sedan'],
-    [2, 'A4', 'B', 'Audi', 'Sedan'],
-    [3, 'A6', 'B', 'Audi', 'Sedan'],
-    [4, 'Punto', 'B', 'Fiat', 'Hatchback'],
-    [5, 'Civic', 'B', 'Honda', 'Hatchback'],
-    [6, 'Focus', 'B', 'Ford', 'Hatchback'],
-    [7, 'Golf', 'B', 'Volkswagen', 'Hatchback'],
-    [8, 'Passat', 'B', 'Volkswagen', 'Sedan'],
-    [9, 'Clio', 'B', 'Renault', 'Hatchback'],
-    [10, 'Megane', 'B', 'Renault', 'Hatchback'],
-    [11, 'Corolla', 'B', 'Toyota', 'Hatchback'],
-    [12, 'Yaris', 'B', 'Toyota', 'Hatchback'],
-    [13, 'Auris', 'B', 'Toyota', 'Hatchback'],
-    [14, 'Avensis', 'B', 'Toyota', 'Sedan'],
-    [15, 'Ceed', 'B', 'Kia', 'Hatchback'],
-    [16, 'Rio', 'B', 'Kia', 'Hatchback'],
-    [17, 'S40', 'B', 'Volvo', 'Sedan'],
-    [18, 'V40', 'B', 'Volvo', 'Hatchback'],
-    [19, 'V50', 'B', 'Volvo', 'Hatchback'],
-    [20, 'XC60', 'B', 'Volvo', 'SUV'],
-    [21, 'XC70', 'B', 'Volvo', 'SUV'],
-    [22, 'C4', 'B', 'Citroen', 'Hatchback'],
-    [23, 'C5', 'B', 'Citroen', 'Sedan'],
-    [24, 'C6', 'B', 'Citroen', 'Sedan'],
-    [25, 'Qashqai', 'B', 'Nissan', 'SUV'],
-    [26, 'Juke', 'B', 'Nissan', 'SUV'],
-    [27, 'Micra', 'B', 'Nissan', 'Hatchback'],
-    [28, 'Note', 'B', 'Nissan', 'Hatchback']],
+    [0, 'astra', 'B', 'opel', 'hatchback'],
+    [1, '3', 'B', 'mazda', 'sedan'],
+    [2, 'a4', 'B', 'audi', 'sedan'],
+    [3, 'a6', 'B', 'audi', 'sedan'],
+    [4, 'punto', 'B', 'fiat', 'hatchback'],
+    [5, 'civic', 'B', 'honda', 'hatchback'],
+    [6, 'focus', 'B', 'ford', 'hatchback'],
+    [7, 'golf', 'B', 'volkswagen', 'hatchback'],
+    [8, 'passat', 'B', 'volkswagen', 'sedan'],
+    [9, 'clio', 'B', 'renault', 'hatchback'],
+    [10, 'megane', 'B', 'renault', 'hatchback'],
+    [11, 'corolla', 'B', 'toyota', 'hatchback'],
+    [12, 'yaris', 'B', 'toyota', 'hatchback'],
+    [13, 'auris', 'B', 'toyota', 'hatchback'],
+    [14, 'avensis', 'B', 'toyota', 'sedan'],
+    [15, 'ceed', 'B', 'kia', 'hatchback'],
+    [16, 'rio', 'B', 'kia', 'hatchback'],
+    [17, 's40', 'B', 'volvo', 'sedan'],
+    [18, 'v40', 'B', 'volvo', 'hatchback'],
+    [19, 'v50', 'B', 'volvo', 'hatchback'],
+    [20, 'xc60', 'B', 'volvo', 'suv'],
+    [21, 'xc70', 'B', 'volvo', 'suv'],
+    [22, 'c4', 'B', 'citroen', 'hatchback'],
+    [23, 'c5', 'B', 'citroen', 'sedan'],
+    [24, 'c6', 'B', 'citroen', 'sedan'],
+    [25, 'qashqai', 'B', 'nissan', 'suv'],
+    [26, 'juke', 'B', 'nissan', 'suv'],
+    [27, 'micra', 'B', 'nissan', 'hatchback'],
+    [28, 'note', 'B', 'nissan', 'hatchback']],
     columns=['id', 'name', 'licence_type_required', 'car_brand_name', 'car_type_name']
 )
 append_to_df('model', model)
@@ -221,21 +228,22 @@ cars = pd.concat([
     sampled_models.reset_index()['id'],
     sampled_models.reset_index()['name'],
     pd.DataFrame(
-    [('B',
-      has_issues,
-      loc_center_x + r * math.cos(theta),
-      loc_center_y + r * math.sin(theta),
-      random.choices(['available', 'decommissioned'], weights=[0.95, 0.05])[
-          0] if not has_issues else 'issues'
-      ) for i, (r, theta), has_issues in zip(
-        range(50),
-        [[math.sqrt(random.random() * loc_radius) * math.sqrt(loc_radius), 2 * math.pi * random.random()] for _ in
-         range(50)],
-        random.choices([0, 1], weights=[0.92, 0.08], k=50)
-    )])
+        [('B',
+          has_issues,
+          loc_center_x + r * math.cos(theta),
+          loc_center_y + r * math.sin(theta),
+          random.choices(['available', 'decommissioned'], weights=[0.95, 0.05])[
+              0] if not has_issues else 'issues'
+          ) for i, (r, theta), has_issues in zip(
+            range(50),
+            [[math.sqrt(random.random() * loc_radius) * math.sqrt(loc_radius), 2 * math.pi * random.random()] for _ in
+             range(50)],
+            random.choices([0, 1], weights=[0.92, 0.08], k=50)
+        )])
 ], axis=1)
-cars.columns = ['id', 'model_id', 'model_name', 'licence_type_required', 'has_issues', 'locationx', 'locationy', 'state']
-append_to_df('car', cars)  # TODO Works only on dry run! wait until model table is done
+cars.columns = ['id', 'model_id', 'model_name', 'licence_type_required', 'has_issues', 'locationx', 'locationy',
+                'state']
+append_to_df('car', cars)
 
 ############################
 # registration certificates
@@ -342,6 +350,10 @@ rental_order = rental_order.apply(row_func, axis=1)
 append_to_df('rental_order', rental_order)
 append_to_df('invoice', invoice)
 
+############################
+# insert
+############################
+
 print(" INSERT ".center(60, '='))
 
 insert_order = [
@@ -365,7 +377,7 @@ assert set(insert_order) == set(dfs.keys())
 
 for table_name in insert_order:
     df = dfs[table_name]
-    print(f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}INSERT to \"{table_name}\"", end=' ')
+    print(u"\u001b[32m" + f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}" + u"\u001b[0m" + f"INSERT to \"{table_name}\"", end=' ')
     aff_rows = df.to_sql(name=table_name,
                          con=engine,
                          if_exists='append',
