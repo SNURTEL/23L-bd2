@@ -15,7 +15,9 @@ from sqlalchemy.orm import Session
 from sqlalchemy import sql
 
 DB_CONFIG_FILE = "config.json"  # Ignored by git!
-INSERT_DRY_RUN = True
+INSERT_DRY_RUN = False
+
+DATE_FORMAT = "%Y-%m-%d"
 
 DATE_FORMAT = "%Y-%m-%d"
 
@@ -57,11 +59,19 @@ def append_to_df(name: str, new_lines: pd.DataFrame) -> None:
 
 fake = faker.Faker('pl_PL')
 
+############################
+# employee positions
+############################
+
 employee_positions = pd.DataFrame([
     [0, 'mechanic', 'maintains vehicles'],
     [1, 'admin', 'keeps the system running']
 ], columns=['id', 'position_name', 'description'])
 append_to_df('employee_position', employee_positions)
+
+############################
+# employees
+############################
 
 employees = pd.DataFrame(
     [(i, name, surname, 0,
@@ -76,6 +86,10 @@ employees = pd.DataFrame(
 )
 append_to_df('employee', employees)
 
+############################
+# customers
+############################
+
 customers = pd.DataFrame(
     [(i, name, surname,
       f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
@@ -84,6 +98,94 @@ customers = pd.DataFrame(
     columns=['id', 'name', 'surname', 'email', 'password_hash']
 )
 append_to_df('customer', customers)
+
+############################
+# car types
+############################
+
+car_type = pd.DataFrame(['Hatchback', 'Kombi', 'Sedan', 'Liftback', 'Van', 'SUV', 'Crossover', 'Coupe'], columns=['name'])
+append_to_df('car_type', car_type)
+
+############################
+# brands
+############################
+
+brand = pd.DataFrame(['Toyota', 'Volkswagen', 'Ford', 'Honda', 'Nissan', 'Hyundai', 'Chevrolet', 'Kia',
+'Mercedes', 'BMW', 'Fiat', 'Opel', 'Peugeot', 'Citroen', 'Audi', 'Skoda', 'Volvo', 'Mazda', 'Seat',
+'Suzuki', 'Mitsubishi', 'Land Rover', 'Jeep', 'Porsche', 'Alfa Romeo', 'Chrysler', 'Jaguar', 'Ferrari', 'Infiniti', 
+'Lexus', 'Dacia', 'Mini', 'Smart', 'Renault'], columns=['name'])
+append_to_df('brand', brand)
+
+############################
+# parameters
+############################
+
+parameter = pd.DataFrame([
+    [0, 'color', 'color', 's'],
+    [1, 'drive_type', 'drive type', 's'],
+    [2, 'engine_capacity', 'engine capacity', 'f'],
+    [3, 'engine_power', 'engine_power', 'i'],
+    [4, 'fuel_type', 'fuel type', 's'],
+    [5, 'gearbox_type', 'gearbox type', 's'],
+    [6, 'mileage', 'mileage', 'i'],
+    [7, 'seat_number', 'seat number', 'i']], 
+    columns=['id', 'name', 'description', 'type'])
+append_to_df('parameter', parameter)
+
+############################
+# models
+############################
+
+model = pd.DataFrame([
+    [0, 'Astra', 'B', 'Opel', 'Hatchback'],
+    [1, '3', 'B', 'Mazda', 'Sedan'],
+    [2, 'A4', 'B', 'Audi', 'Sedan'],
+    [3, 'A6', 'B', 'Audi', 'Sedan'],
+    [4, 'Punto', 'B', 'Fiat', 'Hatchback'],
+    [5, 'Civic', 'B', 'Honda', 'Hatchback'],
+    [6, 'Focus', 'B', 'Ford', 'Hatchback'],
+    [7, 'Golf', 'B', 'Volkswagen', 'Hatchback'],
+    [8, 'Passat', 'B', 'Volkswagen', 'Sedan'],
+    [9, 'Clio', 'B', 'Renault', 'Hatchback'],
+    [10, 'Megane', 'B', 'Renault', 'Hatchback'],
+    [11, 'Corolla', 'B', 'Toyota', 'Hatchback'],
+    [12, 'Yaris', 'B', 'Toyota', 'Hatchback'],
+    [13, 'Auris', 'B', 'Toyota', 'Hatchback'],
+    [14, 'Avensis', 'B', 'Toyota', 'Sedan'],
+    [15, 'Ceed', 'B', 'Kia', 'Hatchback'],
+    [16, 'Rio', 'B', 'Kia', 'Hatchback'],
+    [17, 'S40', 'B', 'Volvo', 'Sedan'],
+    [18, 'V40', 'B', 'Volvo', 'Hatchback'],
+    [19, 'V50', 'B', 'Volvo', 'Hatchback'],
+    [20, 'XC60', 'B', 'Volvo', 'SUV'],
+    [21, 'XC70', 'B', 'Volvo', 'SUV'],
+    [22, 'C4', 'B', 'Citroen', 'Hatchback'],
+    [23, 'C5', 'B', 'Citroen', 'Sedan'],
+    [24, 'C6', 'B', 'Citroen', 'Sedan'],
+    [25, 'Qashqai', 'B', 'Nissan', 'SUV'],
+    [26, 'Juke', 'B', 'Nissan', 'SUV'],
+    [27, 'Micra', 'B', 'Nissan', 'Hatchback'],
+    [28, 'Note', 'B', 'Nissan', 'Hatchback']],
+    columns=['id', 'name', 'licence_type_required', 'car_brand_name', 'car_type_name']
+)
+append_to_df('model', model)
+
+############################
+# model parameters
+############################
+
+model_parameter = pd.DataFrame(
+    [[i, 'red', None, i, 0] for i in range (0, 29)] +
+    [[i+33, 'manual', None, i, 1] for i in range(29)] +
+    [[i+66, None, 5, i, 7] for i in range (29)],
+    columns=['id', 'text_value', 'numerical_value', 'model_id', 'parameter_id']
+)
+
+append_to_df('model_parameter', model_parameter)
+
+############################
+# driving licences
+############################
 
 fake_drv_lic_number = lambda: f"{fake.random.randint(0, 9999):04}/{fake.random.randint(0, 99):02}/{fake.random.randint(0, 9999):04}"
 
@@ -110,19 +212,14 @@ driving_licences = pd.concat([
 ])
 append_to_df('driving_licence', driving_licences)
 
+############################
 # cars
-models_with_id = [  # TODO replace with actual data
-    (10001, 'Volkswagen Golf'),
-    (10002, 'Hyundai i20'),
-    (10003, 'Toyota Yaris'),
-    (10004, 'Ford Mondeo')
-]
+############################
 
 loc_center_x, loc_center_y, loc_radius = 52.240237, 21.032048, 0.118085334
 cars = pd.DataFrame(
-    [(
-        i,
-        *random.choice(models_with_id),
+    [(  i,
+        random.choice(model['id'].to_list()),
         'B',
         has_issues,  # FIXME REDUNDANT COLUMN!
         loc_center_x + r * math.cos(theta),
@@ -141,6 +238,10 @@ cars = pd.DataFrame(
 )
 append_to_df('car', cars)  # TODO Works only on dry run! wait until model table is done
 
+############################
+# registration certificates
+############################
+
 registration_certificate = pd.DataFrame(
     [(car_id,
       fake.date_between(datetime.date(2022, 5, 16), datetime.date(2023, 5, 16)).strftime(DATE_FORMAT),
@@ -148,6 +249,10 @@ registration_certificate = pd.DataFrame(
     columns=['car_id', 'start_date', 'end_date']
 )
 append_to_df('registration_certificate', registration_certificate)
+
+############################
+# insurance
+############################
 
 insurance = pd.DataFrame(
     [(car_id,
@@ -159,6 +264,10 @@ insurance = pd.DataFrame(
     columns=['car_id', 'start_date', 'end_date']
 )
 append_to_df('insurance', insurance)
+
+############################
+# technical inspection
+############################
 
 technical_inspection = pd.DataFrame(
     [(
@@ -237,8 +346,8 @@ insert_order = [
     'driving_licence',
     'brand',
     'car_type',
-    'model',
     'parameter',
+    'model',
     'model_parameter',
     'car',
     'technical_inspection',
