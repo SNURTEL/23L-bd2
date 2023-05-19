@@ -19,11 +19,6 @@ INSERT_DRY_RUN = False
 
 DATE_FORMAT = "%Y-%m-%d"
 
-DATE_FORMAT = "%Y-%m-%d"
-
-# TODO extract magic numbers
-# TODO generate remaining data
-
 print(" PREP ".center(60, '='))
 print('Query DB to validate schema...')
 
@@ -60,7 +55,7 @@ def append_to_df(name: str, new_lines: pd.DataFrame) -> None:
 fake = faker.Faker('pl_PL')
 
 ############################
-# employee positions
+# employee_positions
 ############################
 
 employee_positions = pd.DataFrame([
@@ -103,7 +98,8 @@ append_to_df('customer', customers)
 # car types
 ############################
 
-car_type = pd.DataFrame(['Hatchback', 'Kombi', 'Sedan', 'Liftback', 'Van', 'SUV', 'Crossover', 'Coupe'], columns=['name'])
+car_type = pd.DataFrame(['Hatchback', 'Kombi', 'Sedan', 'Liftback', 'Van', 'SUV', 'Crossover', 'Coupe'],
+                        columns=['name'])
 append_to_df('car_type', car_type)
 
 ############################
@@ -111,9 +107,11 @@ append_to_df('car_type', car_type)
 ############################
 
 brand = pd.DataFrame(['Toyota', 'Volkswagen', 'Ford', 'Honda', 'Nissan', 'Hyundai', 'Chevrolet', 'Kia',
-'Mercedes', 'BMW', 'Fiat', 'Opel', 'Peugeot', 'Citroen', 'Audi', 'Skoda', 'Volvo', 'Mazda', 'Seat',
-'Suzuki', 'Mitsubishi', 'Land Rover', 'Jeep', 'Porsche', 'Alfa Romeo', 'Chrysler', 'Jaguar', 'Ferrari', 'Infiniti', 
-'Lexus', 'Dacia', 'Mini', 'Smart', 'Renault'], columns=['name'])
+                      'Mercedes', 'BMW', 'Fiat', 'Opel', 'Peugeot', 'Citroen', 'Audi', 'Skoda', 'Volvo', 'Mazda',
+                      'Seat',
+                      'Suzuki', 'Mitsubishi', 'Land Rover', 'Jeep', 'Porsche', 'Alfa Romeo', 'Chrysler', 'Jaguar',
+                      'Ferrari', 'Infiniti',
+                      'Lexus', 'Dacia', 'Mini', 'Smart', 'Renault'], columns=['name'])
 append_to_df('brand', brand)
 
 ############################
@@ -128,7 +126,7 @@ parameter = pd.DataFrame([
     [4, 'fuel_type', 'fuel type', 's'],
     [5, 'gearbox_type', 'gearbox type', 's'],
     [6, 'mileage', 'mileage', 'i'],
-    [7, 'seat_number', 'seat number', 'i']], 
+    [7, 'seat_number', 'seat number', 'i']],
     columns=['id', 'name', 'description', 'type'])
 append_to_df('parameter', parameter)
 
@@ -175,9 +173,9 @@ append_to_df('model', model)
 ############################
 
 model_parameter = pd.DataFrame(
-    [[i, 'red', None, i, 0] for i in range (0, 29)] +
-    [[i+33, 'manual', None, i, 1] for i in range(29)] +
-    [[i+66, None, 5, i, 7] for i in range (29)],
+    [[i, 'red', None, i, 0] for i in range(0, 29)] +
+    [[i + 33, 'manual', None, i, 1] for i in range(29)] +
+    [[i + 66, None, 5, i, 7] for i in range(29)],
     columns=['id', 'text_value', 'numerical_value', 'model_id', 'parameter_id']
 )
 
@@ -201,7 +199,6 @@ def fake_drv_lic(category, id):
 
 drv_lic_columns = ['customer_id', 'drivers_license_number', 'drivers_license_category', 'valid_from', 'valid_until']
 
-# FIXME no info on whether only automatic transmission is allowed
 driving_licences = pd.concat([
     pd.DataFrame([fake_drv_lic('B', customer_id) for customer_id in customers['id'][:2800]], columns=drv_lic_columns),
     pd.DataFrame([fake_drv_lic(category, customer_id) for category, customer_id in
@@ -218,16 +215,16 @@ append_to_df('driving_licence', driving_licences)
 
 loc_center_x, loc_center_y, loc_radius = 52.240237, 21.032048, 0.118085334
 cars = pd.DataFrame(
-    [(  i,
-        random.choice(model['id'].to_list()),
-        'B',
-        has_issues,  # FIXME REDUNDANT COLUMN!
-        loc_center_x + r * math.cos(theta),
-        loc_center_y + r * math.sin(theta),
-        random.choices(['available', 'decommissioned'], weights=[0.95, 0.05])[
-            # random.choices(['available', 'rented', 'decommissioned'], weights=[0.6, 0.35, 0.05])[
-            0] if not has_issues else 'issues'
-    ) for i, (r, theta), has_issues in zip(
+    [(i,
+      random.choice(model['id'].to_list()),
+      'B',
+      has_issues,  # FIXME REDUNDANT COLUMN!
+      loc_center_x + r * math.cos(theta),
+      loc_center_y + r * math.sin(theta),
+      random.choices(['available', 'decommissioned'], weights=[0.95, 0.05])[
+          # random.choices(['available', 'rented', 'decommissioned'], weights=[0.6, 0.35, 0.05])[
+          0] if not has_issues else 'issues'
+      ) for i, (r, theta), has_issues in zip(
         range(50),
         # this draws uniformly distributed points from a circle
         [[math.sqrt(random.random() * loc_radius) * math.sqrt(loc_radius), 2 * math.pi * random.random()] for _ in
@@ -283,6 +280,11 @@ technical_inspection = pd.DataFrame(
 )
 append_to_df('technical_inspection', technical_inspection)
 
+############################
+# rental order
+# invoice
+############################
+
 rendal_order_idx_generator = itertools.count()
 rental_order = pd.DataFrame(  # this assumes no car was rented more than once a day
     itertools.chain(*[(
@@ -306,12 +308,11 @@ rental_order = pd.DataFrame(  # this assumes no car was rented more than once a 
     columns=['id', 'is_finished', 'fee_rate', 'start_date_time', 'end_date_time', 'car_id', 'customer_id', 'invoice_id']
 )
 
-
 sampled = rental_order.sample(n=1000).sort_values('id')
 to_invoice = pd.merge(sampled, customers, left_on="customer_id", right_on="id")
 total_fees = ((to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.components['hours'] * 60 + \
               (to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.components['minutes']) * \
-              to_invoice['fee_rate']
+             to_invoice['fee_rate']
 invoice = pd.concat([
     pd.DataFrame(range(len(to_invoice))),
     total_fees,
@@ -324,6 +325,7 @@ invoice.columns = ['invoice_id', 'total', 'nip', 'customer_name', 'customer_surn
 
 rental_order_to_invoice_mapping = dict(zip(list(to_invoice['id_x']), list(invoice['invoice_id'])))
 
+
 def row_func(row):
     res = rental_order_to_invoice_mapping.get(row['id'], None)
     if res is None:
@@ -331,6 +333,7 @@ def row_func(row):
     else:
         return row.replace({None: res}, regex=False)
         return row
+
 
 rental_order = rental_order.apply(row_func, axis=1)
 
