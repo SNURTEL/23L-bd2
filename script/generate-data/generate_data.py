@@ -4,6 +4,7 @@ import math
 import random
 
 import dateutil
+import itertools
 from types import SimpleNamespace
 
 import faker
@@ -15,6 +16,8 @@ from sqlalchemy import sql
 
 DB_CONFIG_FILE = "config.json"  # Ignored by git!
 INSERT_DRY_RUN = False
+
+DATE_FORMAT = "%Y-%m-%d"
 
 DATE_FORMAT = "%Y-%m-%d"
 
@@ -71,8 +74,14 @@ append_to_df('employee_position', employee_positions)
 ############################
 
 employees = pd.DataFrame(
-    [(i, fake.first_name(), fake.last_name(), 0, fake.ascii_email(), 'tmphash') for i in range(17)] + 
-    [(i, fake.first_name(), fake.last_name(), 1, fake.ascii_email(), 'tmphash') for i in range(17, 20, 1)],
+    [(i, name, surname, 0,
+      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
+      ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
+     enumerate(((fake.first_name(), fake.last_name()) for _ in range(17)))] +
+    [(i, name, surname, 1,
+      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
+      ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
+     enumerate(((fake.first_name(), fake.last_name()) for _ in range(3)), 17)],
     columns=['id', 'name', 'surname', 'employee_position_id', 'email', 'password_hash']
 )
 append_to_df('employee', employees)
@@ -82,7 +91,10 @@ append_to_df('employee', employees)
 ############################
 
 customers = pd.DataFrame(
-    [(i, fake.first_name(), fake.last_name(), fake.ascii_email(), 'tmphash') for i in range(30)],
+    [(i, name, surname,
+      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
+      ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
+     enumerate(((fake.first_name(), fake.last_name()) for _ in range(3000)))],
     columns=['id', 'name', 'surname', 'email', 'password_hash']
 )
 append_to_df('customer', customers)
@@ -212,8 +224,9 @@ cars = pd.DataFrame(
         has_issues,  # FIXME REDUNDANT COLUMN!
         loc_center_x + r * math.cos(theta),
         loc_center_y + r * math.sin(theta),
-        random.choices(['available', 'rented', 'decommissioned'], weights=[0.6, 0.35, 0.05])[0],
-        'free'
+        random.choices(['available', 'decommissioned'], weights=[0.95, 0.05])[
+            # random.choices(['available', 'rented', 'decommissioned'], weights=[0.6, 0.35, 0.05])[
+            0] if not has_issues else 'issues'
     ) for i, (r, theta), has_issues in zip(
         range(50),
         # this draws uniformly distributed points from a circle
@@ -270,9 +283,59 @@ technical_inspection = pd.DataFrame(
 )
 append_to_df('technical_inspection', technical_inspection)
 
-####################################################################################
-# execute
-####################################################################################
+rendal_order_idx_generator = itertools.count()
+rental_order = pd.DataFrame(  # this assumes no car was rented more than once a day
+    itertools.chain(*[(
+        [(next(rendal_order_idx_generator),
+          True,
+          random.randint(80, 130),
+          base_d + start_h,
+          base_d + start_h + datetime.timedelta(minutes=random.randint(8, 80)),
+          car,
+          customer,
+          None
+          ) for start_h, car, customer in zip(
+            (datetime.timedelta(hours=6) + datetime.timedelta(minutes=random.randint(0, 17 * 60)) for _ in
+             range(num_rented_cars)),
+            cars.sample(num_rented_cars, replace=False)['id'],
+            customers.sample(num_rented_cars, replace=False)['id'])]
+    ) for base_d, num_rented_cars in zip(
+        reversed([datetime.datetime(2023, 5, 16) - datetime.timedelta(days=d) for d in range(365)]),
+        (random.randint(20, 40) for _ in range(365))
+    )]),
+    columns=['id', 'is_finished', 'fee_rate', 'start_date_time', 'end_date_time', 'car_id', 'customer_id', 'invoice_id']
+)
+
+
+sampled = rental_order.sample(n=1000).sort_values('id')
+to_invoice = pd.merge(sampled, customers, left_on="customer_id", right_on="id")
+total_fees = ((to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.components['hours'] * 60 + \
+              (to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.components['minutes']) * \
+              to_invoice['fee_rate']
+invoice = pd.concat([
+    pd.DataFrame(range(len(to_invoice))),
+    total_fees,
+    pd.DataFrame([fake.company_vat() for _ in range(1000)]),
+    to_invoice['name'],
+    to_invoice['surname'],
+    pd.DataFrame(['' for _ in range(1000)])],
+    axis=1)
+invoice.columns = ['invoice_id', 'total', 'nip', 'customer_name', 'customer_surname', 'rental_orders']
+
+rental_order_to_invoice_mapping = dict(zip(list(to_invoice['id_x']), list(invoice['invoice_id'])))
+
+def row_func(row):
+    res = rental_order_to_invoice_mapping.get(row['id'], None)
+    if res is None:
+        return row
+    else:
+        return row.replace({None: res}, regex=False)
+        return row
+
+rental_order = rental_order.apply(row_func, axis=1)
+
+append_to_df('rental_order', rental_order)
+append_to_df('invoice', invoice)
 
 print(" INSERT ".center(60, '='))
 
