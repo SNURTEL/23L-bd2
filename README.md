@@ -107,3 +107,21 @@ Tagi:
 
 #### Wybór technologii i uściślenie założeń projektowych
 Bazę danych postawimy na Infinite Free, używając silnika MySQL. Aplikacja zostanie napisana używająć framework'a "Flutter" i języka "Dart"
+
+## Etap 2: Projekt Aplikacji (dostępowej i raportowej, 30%) do 19.05.2023 r. (termin zgłoszenia gotowości do prezentacji).
+- fizyczny model danych, - dokument
+- implementacja bazy danych, - prezentacja na konsultacjach (tabele, ograniczenia, wyzwalacze)
+- wygenerowanie danych testowych (dla testów wymagań funkcjonalnych i pozafunkcjonalnych) - prezentacja
+- scenariusze testów. - dokument
+
+### Fizyczny model danych
+![](https://gitlab-stud.elka.pw.edu.pl/towienko/23l-bd2-projekt/-/raw/master/script/diagram.png)
+
+### Implementacja bazy danych (skrypty)
+Folder `script`
+
+### Wygenerowanie danych testowych
+Folder `script/generate-data`
+
+### Scenariusze testów
+[Plik pdf](<link>)
