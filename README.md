@@ -123,5 +123,4 @@ Folder `script`
 ### Wygenerowanie danych testowych
 Folder `script/generate-data`
 
-### Scenariusze testów
-[Plik pdf](<link>)
+### [Scenariusze testów](https://gitlab-stud.elka.pw.edu.pl/towienko/23l-bd2-projekt/-/blob/master/test_scripts.pdf)
