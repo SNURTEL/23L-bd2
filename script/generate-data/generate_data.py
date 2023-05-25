@@ -63,8 +63,8 @@ fake = faker.Faker('pl_PL')
 ############################
 
 employee_positions = pd.DataFrame([
-    [0, 'mechanic', 'maintains vehicles'],
-    [1, 'admin', 'keeps the system running']
+    [1, 'mechanic', 'maintains vehicles'],
+    [2, 'admin', 'keeps the system running']
 ], columns=['id', 'position_name', 'description'])
 append_to_df('employee_position', employee_positions)
 
@@ -73,11 +73,11 @@ append_to_df('employee_position', employee_positions)
 ############################
 
 employees = pd.DataFrame(
-    [(i, name.lower(), surname.lower(), 0,
+    [(i+1, name.lower(), surname.lower(), 1,
       f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
       ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
      enumerate(((fake.first_name(), fake.last_name()) for _ in range(17)))] +
-    [(i, name, surname, 1,
+    [(i+1, name, surname, 2,
       f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
       ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
      enumerate(((fake.first_name(), fake.last_name()) for _ in range(3)), 17)],
@@ -90,10 +90,10 @@ append_to_df('employee', employees)
 ############################
 
 customers = pd.DataFrame(
-    [(i, name.lower(), surname.lower(),
+    [(i+1, name.lower(), surname.lower(),
       f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
       ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
-     enumerate(((fake.first_name(), fake.last_name()) for _ in range(2999)))] + \
+     enumerate(((fake.first_name(), fake.last_name()) for _ in range(99)))] + \
     [(2999, 'test', 'user', 'tuser@elka.pw.edu.pl',
       # argon2id hash for 'super secret password', salt='bd2project'
       '$argon2id$v=19$m=256,t=2,p=8$YmQycHJvamVjdA$cxR5EyldKIXaEIQVNaoaiao8kVvr+QyWpL5/5ugHrE6fiAUzoHsi1weCKYqiYMflfPa1OFnDFIMbfZSDDj9y')],
@@ -126,14 +126,14 @@ append_to_df('brand', brand)
 ############################
 
 parameter = pd.DataFrame([
-    [0, 'color', 'color', 's'],
     [1, 'drive_type', 'drive type', 's'],
     [2, 'engine_capacity', 'engine capacity', 'f'],
     [3, 'engine_power', 'engine_power', 'i'],
     [4, 'fuel_type', 'fuel type', 's'],
     [5, 'gearbox_type', 'gearbox type', 's'],
     [6, 'mileage', 'mileage', 'i'],
-    [7, 'seat_number', 'seat number', 'i']],
+    [7, 'seat_number', 'seat number', 'i'],
+    [8, 'color', 'color', 's']],
     columns=['id', 'name', 'description', 'type'])
 append_to_df('parameter', parameter)
 
@@ -142,7 +142,6 @@ append_to_df('parameter', parameter)
 ############################
 
 model = pd.DataFrame([
-    [0, 'astra', 'B', 'opel', 'hatchback'],
     [1, '3', 'B', 'mazda', 'sedan'],
     [2, 'a4', 'B', 'audi', 'sedan'],
     [3, 'a6', 'B', 'audi', 'sedan'],
@@ -170,7 +169,8 @@ model = pd.DataFrame([
     [25, 'qashqai', 'B', 'nissan', 'suv'],
     [26, 'juke', 'B', 'nissan', 'suv'],
     [27, 'micra', 'B', 'nissan', 'hatchback'],
-    [28, 'note', 'B', 'nissan', 'hatchback']],
+    [28, 'note', 'B', 'nissan', 'hatchback'],
+    [29, 'astra', 'B', 'opel', 'hatchback']],
     columns=['id', 'name', 'licence_type_required', 'car_brand_name', 'car_type_name']
 )
 append_to_df('model', model)
@@ -180,9 +180,9 @@ append_to_df('model', model)
 ############################
 
 model_parameter = pd.DataFrame(
-    [[i, 'red', None, i, 0] for i in range(0, 29)] +
-    [[i + 33, 'manual', None, i, 1] for i in range(29)] +
-    [[i + 66, None, 5, i, 7] for i in range(29)],
+    [[i, 'red', None, i, 8] for i in range(1, 30)] +
+    [[i + 29, 'manual', None, i, 5] for i in range(1, 30)] +
+    [[i + 58, None, None, i, 7] for i in range(1, 30)],
     columns=['id', 'text_value', 'numerical_value', 'model_id', 'parameter_id']
 )
 
@@ -224,7 +224,7 @@ loc_center_x, loc_center_y, loc_radius = 52.240237, 21.032048, 0.118085334
 sampled_models = model.sample(n=50, replace=True)
 
 cars = pd.concat([
-    pd.DataFrame(range(50)),
+    pd.DataFrame(range(1, 51)),
     sampled_models.reset_index()['id'],
     sampled_models.reset_index()['name'],
     pd.DataFrame(
@@ -278,13 +278,13 @@ append_to_df('insurance', insurance)
 
 technical_inspection = pd.DataFrame(
     [(
-        i,
+        i+1,
         date,
         mechanic,
         car
     ) for i, (date, mechanic, car) in enumerate(zip(
         sorted(fake.date_between(datetime.date(2013, 5, 16), datetime.date(2023, 5, 16)) for _ in range(500)),
-        employees[employees['employee_position_id'] == 0]['id'].sample(500, replace=True),
+        employees[employees['employee_position_id'] == 1]['id'].sample(500, replace=True),
         cars['id'].sample(500, replace=True)
     ))], columns=['id', 'date', 'mechanic_id', 'car_id']
 )
@@ -296,6 +296,7 @@ append_to_df('technical_inspection', technical_inspection)
 ############################
 
 rendal_order_idx_generator = itertools.count()
+next(rendal_order_idx_generator)
 rental_order = pd.DataFrame(  # this assumes no car was rented more than once a day
     itertools.chain(*[(
         [(next(rendal_order_idx_generator),
@@ -324,7 +325,7 @@ total_fees = ((to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.c
               (to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.components['minutes']) * \
              to_invoice['fee_rate']
 invoice = pd.concat([
-    pd.DataFrame(range(len(to_invoice))),
+    pd.DataFrame(range(1, len(to_invoice)+1)),
     total_fees,
     pd.DataFrame([fake.company_vat() for _ in range(1000)]),
     to_invoice['name'],
