@@ -1,0 +1,33 @@
+name: grab_a_car
+
+description: An app enabling user to rent a car.
+
+publish_to: 'none' # Remove this line if you wish to publish to
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  flutter_map: ^4.0.0
+  latlong2: ^0.8.2
+  mysql1: ^0.20.0
+  tuple: ^2.0.1
+  geolocator: ^9.0.2
+  multi_select_flutter: ^4.1.3
+  crypt: ^4.3.0
+  email_validator: ^2.1.17
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/connection_credentials.json
