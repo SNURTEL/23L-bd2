@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
-void showFutureDialog({
+Future showFutureDialog({
     required Future<bool> future,
     required BuildContext context,
     required String progressInfo,
     required String failedInfo,
     required String successInfo,
-    VoidCallback? endCallback,
 }){
-  showDialog(
+  return showDialog(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) => AlertDialog(
@@ -24,7 +23,6 @@ void showFutureDialog({
                     Text(info),
                     TextButton(child: const Text('OK'), onPressed: (){
                       Navigator.of(context).popUntil((route) => route.isFirst);
-                      endCallback?.call();
                     },),
                   ];
                 }else{

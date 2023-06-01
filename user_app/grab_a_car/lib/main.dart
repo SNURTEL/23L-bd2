@@ -20,7 +20,10 @@ class _StarterState extends State<Starter> {
   @override
   Widget build(BuildContext context) {
     if(customerId > 0) {
-      return MainApp(customerId: customerId);
+      return MainApp(
+          customerId: customerId,
+          logoutCallback: () => setState((){customerId = -1;}),
+      );
     } else {
       return LoggingApp(
         logInCallback: (int obtainedCustomerId){

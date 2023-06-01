@@ -4,13 +4,17 @@ import 'cars_map.dart';
 import 'invoices_list.dart';
 import 'tours_list.dart';
 import 'customer_info.dart';
+import 'logout.dart';
 
-enum Page {carMap, myTours, invoices, profile}
+enum Page {carMap, myTours, invoices, profile, logout}
 
 class MainScaffold extends StatefulWidget {
   final BaseConnector connector;
+  final VoidCallback logoutCallback;
 
-  const MainScaffold({required this.connector, super.key});
+  const MainScaffold({required this.connector,required this.logoutCallback,
+    super.key, });
+
   @override
   State<MainScaffold> createState() => _MainScaffold();
 }
@@ -39,9 +43,12 @@ class _MainScaffold extends State<MainScaffold> {
     }else if(selectedIndex == Page.invoices) {
       title = 'Invoices';
       body = InvoiceList(connector: widget.connector);
-    }else{
+    }else if (selectedIndex == Page.profile){
       title = 'Profile';
       body = CustomerDetailsWidget(connector: widget.connector);
+    }else{
+      title = 'LogOut';
+      body = Logout(logoutCallback: widget.logoutCallback);
     }
     return Scaffold(
       appBar: AppBar(
@@ -74,6 +81,12 @@ class _MainScaffold extends State<MainScaffold> {
                   onTap: () => tapIndex(Page.profile),
                   selected: selectedIndex == Page.profile,
                 ),
+                ListTile(
+                  leading: const Icon(Icons.logout),
+                  title: const Text('LogOut'),
+                  onTap: () => tapIndex(Page.logout),
+                  selected: selectedIndex == Page.logout,
+                )
               ]
           )
       ),

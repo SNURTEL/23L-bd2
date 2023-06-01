@@ -22,9 +22,7 @@ class LoggingConnector{
         return row['id'] as int;
       }
       return -1;
-    } catch (e, s) {
-      print('Exception details:\n $e');
-      print('Stack trace:\n $s');
+    } catch (e) {
       return -2;
     } finally {
       await conn.close();
@@ -46,26 +44,24 @@ class LoggingConnector{
       );
       if(result.isNotEmpty) return -1;
 
-      Random _rnd = Random();
-      const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+      final Random rnd = Random();
+      const chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
       final String salt = String.fromCharCodes(
         Iterable.generate(
           10,
-          (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))
+          (_) => chars.codeUnitAt(rnd.nextInt(chars.length))
         )
       );
-      final String password_hash = Crypt.sha256(password, salt: salt).toString();
+      final String passwordHash = Crypt.sha256(password, salt: salt).toString();
 
       result = await conn.query(
         'INSERT INTO customer (name, surname, email, password_hash) '
-          'VALUES (?,?,?,?)', [name, surname, email, password_hash]
+          'VALUES (?,?,?,?)', [name, surname, email, passwordHash]
       );
       int? affectedRows = result.affectedRows;
       if(affectedRows == null || affectedRows != 1) return -2;
       return 1;
-    } catch (e, s) {
-      print('Exception details:\n $e');
-      print('Stack trace:\n $s');
+    } catch (e) {
       return -2;
     } finally {
       await conn.close();

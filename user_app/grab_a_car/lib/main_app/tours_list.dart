@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:grab_a_car/database/base_connector.dart';
+import '../data/invoice.dart';
 import '../data/rental_order.dart';
+import '../data/car.dart';
 import 'connector_utils.dart';
+import 'car_details.dart';
+import 'invoice_details.dart';
 
 class ToursList extends StatelessWidget {
   final BaseConnector connector;
@@ -32,7 +36,6 @@ class ToursList extends StatelessWidget {
     );
   }
 }
-
 
 class __RentalOrderList extends StatefulWidget {
   final BaseConnector connector;
@@ -86,7 +89,7 @@ class __RentalOrderDetails extends StatelessWidget {
   final RentalOrder order;
   final BaseConnector connector;
 
-  __RentalOrderDetails({required this.order, required this.connector});
+  const __RentalOrderDetails({required this.order, required this.connector});
 
   @override
   Widget build(BuildContext context) {
@@ -95,91 +98,137 @@ class __RentalOrderDetails extends StatelessWidget {
     const hspace = SizedBox(height: 8);
     const wspace = SizedBox(width: 4);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Order Details'),
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
+    final Column infoColumn = Column(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
               children: [
-                Row(
-                  children: [
-                    const Text('Order ID: ', style: styleLeft),
-                    wspace,
-                    Text('${order.id}', style: styleRight),
-                  ],
-                ),
-                hspace,
-                Row(
-                  children: [
-                    const Text('Is Finished: ', style: styleLeft),
-                    wspace,
-                    Text(order.isFinished ? 'Yes' : 'No', style: styleRight),
-                  ],
-                ),
-                hspace,
-                Row(
-                  children: [
-                    const Text('Fee Rate: ', style: styleLeft),
-                    wspace,
-                    Text('${order.feeRate}', style: styleRight),
-                  ],
-                ),
-                hspace,
-                Row(
-                  children: [
-                    const Text('Start Time: ', style: styleLeft),
-                    wspace,
-                    Text('${order.startTime}', style: styleRight),
-                  ],
-                ),
-                hspace,
-                Row(
-                  children: [
-                    const Text('End Time: ', style: styleLeft),
-                    wspace,
-                    Text('${order.endTime ?? 'Not available'}', style: styleRight),
-                  ],
-                ),
-                hspace,
-                Row(
-                  children: [
-                    const Text('Car ID: ', style: styleLeft),
-                    wspace,
-                    Text('${order.carId}', style: styleRight),
-                  ],
-                ),
-                hspace,
-                Row(
-                  children: [
-                    const Text('Invoice ID: ', style: styleLeft),
-                    wspace,
-                    Text('${order.invoiceID ?? 'Not assigned'}', style: styleRight),
-                  ],
-                ),
+                const Text('Order ID: ', style: styleLeft),
+                wspace,
+                Text('${order.id}', style: styleRight),
               ],
             ),
-            if(!order.isFinished)
-              OutlinedButton(
-                onPressed: () {
-                  Future<bool> future = connector.finishRentalOrder(order.id);
-                  showFutureDialog(
-                      future: future,
-                      context: context,
-                      progressInfo: 'Finishing tour, please wait',
-                      failedInfo: 'Unable to finish tour. Please check your internet connection and try again later',
-                      successInfo: 'Tour finished');
-                },
-                child: Text('Finish Tour'),
-              )
+            hspace,
+            Row(
+              children: [
+                const Text('Is Finished: ', style: styleLeft),
+                wspace,
+                Text(order.isFinished ? 'Yes' : 'No', style: styleRight),
+              ],
+            ),
+            hspace,
+            Row(
+              children: [
+                const Text('Fee Rate: ', style: styleLeft),
+                wspace,
+                Text('${order.feeRate}', style: styleRight),
+              ],
+            ),
+            hspace,
+            Row(
+              children: [
+                const Text('Start Time: ', style: styleLeft),
+                wspace,
+                Text('${order.startTime}', style: styleRight),
+              ],
+            ),
+            hspace,
+            Row(
+              children: [
+                const Text('End Time: ', style: styleLeft),
+                wspace,
+                Text('${order.endTime ?? 'Not available'}', style: styleRight),
+              ],
+            ),
+            hspace,
+            Row(
+              children: [
+                const Text('Car ID: ', style: styleLeft),
+                wspace,
+                Text('${order.carId}', style: styleRight),
+              ],
+            ),
+            hspace,
+            Row(
+              children: [
+                const Text('Invoice ID: ', style: styleLeft),
+                wspace,
+                Text('${order.invoiceID ?? 'Not assigned'}', style: styleRight),
+              ],
+            ),
           ],
         ),
-      ),
+        if(!order.isFinished)
+          OutlinedButton(
+            onPressed: () {
+              Future<bool> future = connector.finishRentalOrder(order.id);
+              showFutureDialog(
+                  future: future,
+                  context: context,
+                  progressInfo: 'Finishing tour, please wait',
+                  failedInfo: 'Unable to finish tour. Please check your internet connection and try again later',
+                  successInfo: 'Tour finished');
+            },
+            child: Text('Finish Tour'),
+          )
+      ],
     );
+
+    List<Widget> buttons = [];
+
+    Car? car = connector.cars[order.carId];
+    if(car != null){
+      buttons.add(
+          ElevatedButton(
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => CarDetails(
+                  car: car,
+                  connector: connector,
+                  rentAvailability: false,
+                ),
+              ),
+            ),
+            child: const Text('See car info'),
+          )
+      );
+    }
+
+    if(order.invoiceID != null){
+      Invoice? invoice = connector.invoices[order.invoiceID];
+      if(invoice != null){
+        buttons.add(
+            ElevatedButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) =>  InvoiceDetails(invoice: invoice),
+                ),
+              ),
+              child: const Text('See Invoice'),
+            )
+        );
+      }
+    }
+
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text('Order Details'),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Expanded(child: infoColumn),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: buttons,
+              )
+            ],
+          )
+        ),
+      );
   }
 }
 

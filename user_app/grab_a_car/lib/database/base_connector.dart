@@ -319,9 +319,7 @@ class BaseConnector{
         surname: row['surname'],
         email: row['email']
       );
-    }catch (e, s) {
-      print('Exception details:\n $e');
-      print('Stack trace:\n $s');
+    }catch (e) {
       return null;
     }finally{
       await conn.close();
@@ -344,9 +342,7 @@ class BaseConnector{
         __customer = customer;
         return true;
       }
-    } catch (e, s) {
-      print('Exception details:\n $e');
-      print('Stack trace:\n $s');
+    } catch (e) {
       return false;
     } finally {
       await conn.close();
@@ -378,9 +374,7 @@ class BaseConnector{
         __cars[carId]?.state = CarState.rented;
         return true;
       }
-    } catch (e, s) {
-      print('Exception details:\n $e');
-      print('Stack trace:\n $s');
+    } catch (e) {
       return false;
     } finally {
       await conn.close();
@@ -409,9 +403,7 @@ class BaseConnector{
           return true;
         }
       }
-    } catch (e, s) {
-      print('Exception details:\n $e');
-      print('Stack trace:\n $s');
+    } catch (e) {
       return false;
     } finally {
       await conn.close();

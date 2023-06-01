@@ -45,8 +45,7 @@ class _CustomerDetailsWidgetState extends State<CustomerDetailsWidget> {
         failedInfo: 'Unable to update personal info.\n'
             'Please check your internet connection address and try again later.',
         successInfo: 'Personal info successfully updated!',
-        endCallback: () => makeNonEditable(),
-    );
+    ).then((a){makeNonEditable();});
   }
 
   void makeNonEditable() {

@@ -6,7 +6,7 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
-import 'car_rent.dart';
+import 'car_details.dart';
 
 class CarMap extends StatefulWidget {
   final BaseConnector connector;
@@ -200,7 +200,7 @@ class _CarMapState extends State<CarMap> {
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => CarRent(
+                      builder: (context) => CarDetails(
                         car: car,
                         connector: widget.connector,
                         rentAvailability: true,
