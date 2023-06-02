@@ -14,12 +14,12 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import sql
 
+from hashes import hash_list
+
 DB_CONFIG_FILE = "config.json"  # Ignored by git!
-INSERT_DRY_RUN = False
+INSERT_DRY_RUN = True
 
 DATE_FORMAT = "%Y-%m-%d"
-
-
 
 print(" PREP ".center(60, '='))
 if INSERT_DRY_RUN:
@@ -72,33 +72,62 @@ append_to_df('employee_position', employee_positions)
 # employees
 ############################
 
-employees = pd.DataFrame(
-    [(i+1, name.lower(), surname.lower(), 1,
+employees_no_hashes = pd.DataFrame(
+    [(i, name.lower(), surname.lower(), 1,
       f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
-      ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
-     enumerate(((fake.first_name(), fake.last_name()) for _ in range(17)))] +
-    [(i+1, name, surname, 2,
+      ) for i, (name, surname) in
+     enumerate(((fake.first_name(), fake.last_name()) for _ in range(17)), 1)] +
+    [(i, name, surname, 2,
       f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
-      ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
-     enumerate(((fake.first_name(), fake.last_name()) for _ in range(3)), 17)],
-    columns=['id', 'name', 'surname', 'employee_position_id', 'email', 'password_hash']
+      ) for i, (name, surname) in
+     enumerate(((fake.first_name(), fake.last_name()) for _ in range(3)), 18)],
+    columns=['id', 'name', 'surname', 'employee_position_id', 'email']
 )
+
+employee_passwords_with_hashes = pd.DataFrame(
+    itertools.islice(itertools.cycle(hash_list), 20),
+    columns=['password', 'hash']
+)
+employees = pd.concat(
+    [employees_no_hashes,
+     employee_passwords_with_hashes['hash']],
+    axis=1
+)
+employees.columns = list(employees_no_hashes.columns) + ['password_hash']
+
+with open('employee_cred.json', mode='w') as fp:
+    empl_email_to_password = pd.concat([employees['email'], employee_passwords_with_hashes['password']], axis=1)
+    fp.write(empl_email_to_password.to_json(indent=4))
 append_to_df('employee', employees)
 
 ############################
 # customers
 ############################
 
-customers = pd.DataFrame(
-    [(i+1, name.lower(), surname.lower(),
+customers_no_hashes = pd.DataFrame(
+    [(i, name.lower(), surname.lower(),
       f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
-      ''.join(random.choices("1234567890abcdef", k=128))) for i, (name, surname) in
-     enumerate(((fake.first_name(), fake.last_name()) for _ in range(99)))] + \
-    [(2999, 'test', 'user', 'tuser@elka.pw.edu.pl',
-      # argon2id hash for 'super secret password', salt='bd2project'
-      '$argon2id$v=19$m=256,t=2,p=8$YmQycHJvamVjdA$cxR5EyldKIXaEIQVNaoaiao8kVvr+QyWpL5/5ugHrE6fiAUzoHsi1weCKYqiYMflfPa1OFnDFIMbfZSDDj9y')],
-    columns=['id', 'name', 'surname', 'email', 'password_hash']
+      ) for i, (name, surname) in
+     enumerate(((fake.first_name(), fake.last_name()) for _ in range(100)), 1)],
+    columns=['id', 'name', 'surname', 'email',]
 )
+
+customer_passwords_with_hashes = pd.DataFrame(
+    itertools.islice(itertools.cycle(hash_list), 100),
+    columns=['password', 'hash']
+)
+customers = pd.concat(
+    [customers_no_hashes,
+     customer_passwords_with_hashes['hash']],
+    axis=1
+)
+customers.columns = list(customers_no_hashes.columns) + ['password_hash']
+
+with open('customer_cred.json', mode='w') as fp:
+    cust_email_to_password = pd.concat([customers['email'], customer_passwords_with_hashes['password']], axis=1)
+    fp.write(cust_email_to_password.to_json(indent=4))
+
+
 append_to_df('customer', customers)
 
 ############################
@@ -278,7 +307,7 @@ append_to_df('insurance', insurance)
 
 technical_inspection = pd.DataFrame(
     [(
-        i+1,
+        i,
         date,
         mechanic,
         car
@@ -286,7 +315,7 @@ technical_inspection = pd.DataFrame(
         sorted(fake.date_between(datetime.date(2013, 5, 16), datetime.date(2023, 5, 16)) for _ in range(500)),
         employees[employees['employee_position_id'] == 1]['id'].sample(500, replace=True),
         cars['id'].sample(500, replace=True)
-    ))], columns=['id', 'date', 'mechanic_id', 'car_id']
+    ), 1)], columns=['id', 'date', 'mechanic_id', 'car_id']
 )
 append_to_df('technical_inspection', technical_inspection)
 
@@ -295,11 +324,10 @@ append_to_df('technical_inspection', technical_inspection)
 # invoice
 ############################
 
-rendal_order_idx_generator = itertools.count()
-next(rendal_order_idx_generator)
+rental_order_idx_generator = itertools.count(1)
 rental_order = pd.DataFrame(  # this assumes no car was rented more than once a day
     itertools.chain(*[(
-        [(next(rendal_order_idx_generator),
+        [(next(rental_order_idx_generator),
           True,
           random.randint(80, 130),
           base_d + start_h,
@@ -325,7 +353,7 @@ total_fees = ((to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.c
               (to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.components['minutes']) * \
              to_invoice['fee_rate']
 invoice = pd.concat([
-    pd.DataFrame(range(1, len(to_invoice)+1)),
+    pd.DataFrame(range(1, len(to_invoice) + 1)),
     total_fees,
     pd.DataFrame([fake.company_vat() for _ in range(1000)]),
     to_invoice['name'],
@@ -378,7 +406,8 @@ assert set(insert_order) == set(dfs.keys())
 
 for table_name in insert_order:
     df = dfs[table_name]
-    print(u"\u001b[32m" + f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}" + u"\u001b[0m" + f"INSERT to \"{table_name}\"", end=' ')
+    print(u"\u001b[32m" + f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}" + u"\u001b[0m" + f"INSERT to \"{table_name}\"",
+          end=' ')
     aff_rows = df.to_sql(name=table_name,
                          con=engine,
                          if_exists='append',
