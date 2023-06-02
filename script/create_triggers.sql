@@ -67,6 +67,38 @@ BEGIN
 	   END IF;
 END //
 
+CREATE TRIGGER check_car_availability BEFORE INSERT ON rental_order FOR EACH ROW
+BEGIN
+    DECLARE v_car_state VARCHAR(50);
+
+    SELECT state INTO v_car_state FROM car
+    WHERE id = NEW.car_id;
+
+    IF v_car_state != 'available' THEN
+        SIGNAL SQLSTATE '45000'
+            SET MESSAGE_TEXT = 'Car is not available!';
+    END IF;
+END //
+
+CREATE TRIGGER renting_car AFTER INSERT ON rental_order FOR EACH ROW
+BEGIN
+       UPDATE rental_order
+       SET is_finished = 0, start_date_time = NOW()
+       WHERE id = NEW.id;
+       UPDATE car
+       SET state = 'rented'
+       WHERE id = NEW.car_id;
+END //
+
+CREATE TRIGGER finished_rent AFTER UPDATE ON rental_order FOR EACH ROW
+BEGIN
+       UPDATE rental_order
+       SET is_finished = 1, end_date_time = NOW()
+       WHERE id = NEW.id;
+       UPDATE car
+       SET state = 'available'
+       WHERE id = new.car_id;
+END //
 
 delimiter ;
 
