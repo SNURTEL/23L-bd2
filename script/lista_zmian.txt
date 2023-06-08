@@ -10,4 +10,4 @@
 
 6) removed: car.has_issues, invoice.rental_orders, rental_order.fee_rate, added: model.fee_rate, rental_order.price
 
-7) 
+7) Zmiana gneracji: gearbox_type, licence_type_required, fuel_type, seats_number

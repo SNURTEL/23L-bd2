@@ -179,35 +179,35 @@ append_to_df('parameter', parameter)
 ############################
 
 model = pd.DataFrame([
-    [1, '3', 'B', 'mazda', 'sedan', 0.4],
+    [1, '3', 'A', 'mazda', 'sedan', 0.4],
     [2, 'a4', 'B', 'audi', 'sedan', 0.7],
     [3, 'a6', 'B', 'audi', 'sedan', 0.8],
-    [4, 'punto', 'B', 'fiat', 'hatchback', 0.3],
+    [4, 'punto', 'A', 'fiat', 'hatchback', 0.3],
     [5, 'civic', 'B', 'honda', 'hatchback', 0.5],
     [6, 'focus', 'B', 'ford', 'hatchback', 0.6],
     [7, 'golf', 'B', 'volkswagen', 'hatchback', 0.6],
-    [8, 'passat', 'B', 'volkswagen', 'sedan', 0.7],
+    [8, 'passat', 'A', 'volkswagen', 'sedan', 0.7],
     [9, 'clio', 'B', 'renault', 'hatchback', 0.4],
     [10, 'megane', 'B', 'renault', 'hatchback', 0.5],
     [11, 'corolla', 'B', 'toyota', 'hatchback', 0.5],
     [12, 'yaris', 'B', 'toyota', 'hatchback', 0.4],
     [13, 'auris', 'B', 'toyota', 'hatchback', 0.5],
     [14, 'avensis', 'B', 'toyota', 'sedan', 0.6],
-    [15, 'ceed', 'B', 'kia', 'hatchback', 0.5],
-    [16, 'rio', 'B', 'kia', 'hatchback', 0.4],
+    [15, 'ceed', 'C', 'kia', 'hatchback', 0.5],
+    [16, 'rio', 'C', 'kia', 'hatchback', 0.4],
     [17, 's40', 'B', 'volvo', 'sedan', 0.6],
-    [18, 'v40', 'B', 'volvo', 'hatchback', 0.5],
+    [18, 'v40', 'C', 'volvo', 'hatchback', 0.5],
     [19, 'v50', 'B', 'volvo', 'hatchback', 0.5],
     [20, 'xc60', 'B', 'volvo', 'suv', 0.8],
-    [21, 'xc70', 'B', 'volvo', 'suv', 0.8],
-    [22, 'c4', 'B', 'citroen', 'hatchback', 0.4],
-    [23, 'c5', 'B', 'citroen', 'sedan', 0.6],
+    [21, 'xc70', 'A', 'volvo', 'suv', 0.8],
+    [22, 'c4', 'A', 'citroen', 'hatchback', 0.4],
+    [23, 'c5', 'A', 'citroen', 'sedan', 0.6],
     [24, 'c6', 'B', 'citroen', 'sedan', 0.7],
     [25, 'qashqai', 'B', 'nissan', 'suv', 0.7],
     [26, 'juke', 'B', 'nissan', 'suv', 0.6],
-    [27, 'micra', 'B', 'nissan', 'hatchback', 0.4],
+    [27, 'micra', 'A', 'nissan', 'hatchback', 0.4],
     [28, 'note', 'B', 'nissan', 'hatchback', 0.4],
-    [29, 'astra', 'B', 'opel', 'hatchback', 0.5]],
+    [29, 'astra', 'C', 'opel', 'hatchback', 0.5]],
     columns=['id', 'name', 'licence_type_required',
              'car_brand_name', 'car_type_name', 'fee_rate']
 )
@@ -219,8 +219,10 @@ append_to_df('model', model)
 
 model_parameter = pd.DataFrame(
     [[i, 'red', None, i, 8] for i in range(1, 30)] +
-    [[i + 29, 'manual', None, i, 5] for i in range(1, 30)] +
-    [[i + 58, None, None, i, 7] for i in range(1, 30)],
+    [[i + 29, random.choices(['automatic', 'manual'], weights=[0.3, 0.7])[0], None, i, 5] for i in range(1, 30)] +
+    [[i + 58, random.choices([2, 4, 5, 7], weights=[0.05, 0.15, 0.7, 0.1])[0], None, i, 7] for i in range(1, 30)] +
+    [[i + 87, random.choices(['diesel', 'gasoline'], weights=[0.4, 0.6])
+      [0], None, i, 4] for i in range(1, 30)],
     columns=['id', 'text_value', 'numerical_value', 'model_id', 'parameter_id']
 )
 
@@ -270,15 +272,14 @@ cars = pd.concat([
     pd.DataFrame(range(1, 51)),
     sampled_models.reset_index()['id'],
     sampled_models.reset_index()['name'],
+    sampled_models.reset_index()['licence_type_required'],
     pd.DataFrame(
-        [('B',
-          loc_center_x + r * math.cos(theta),
+        [(loc_center_x + r * math.cos(theta),
           loc_center_y + r * math.sin(theta),
           random.choices(['available', 'decommissioned'], weights=[0.95, 0.05])[0])
          for (r, theta) in
             [[math.sqrt(random.random() * loc_radius) * math.sqrt(loc_radius), 2 * math.pi * random.random()] for _ in
-             range(50)]])
-], axis=1)
+             range(50)]])], axis=1)
 cars.columns = ['id', 'model_id', 'model_name', 'licence_type_required', 'locationx', 'locationy',
                 'state']
 append_to_df('car', cars)
