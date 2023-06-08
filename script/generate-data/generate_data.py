@@ -17,7 +17,7 @@ from sqlalchemy import sql
 from hashes import hash_list
 
 DB_CONFIG_FILE = "config.json"  # Ignored by git!
-INSERT_DRY_RUN = True
+INSERT_DRY_RUN = False
 
 DATE_FORMAT = "%Y-%m-%d"
 
@@ -77,11 +77,13 @@ append_to_df('employee_position', employee_positions)
 
 employees_no_hashes = pd.DataFrame(
     [(i, name.lower(), surname.lower(), 1,
-      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
+      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii',
+                                                                              errors='ignore').decode("utf-8"),
       ) for i, (name, surname) in
      enumerate(((fake.first_name(), fake.last_name()) for _ in range(17)), 1)] +
     [(i, name, surname, 2,
-      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
+      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii',
+                                                                              errors='ignore').decode("utf-8"),
       ) for i, (name, surname) in
      enumerate(((fake.first_name(), fake.last_name()) for _ in range(3)), 18)],
     columns=['id', 'name', 'surname', 'employee_position_id', 'email']
@@ -99,7 +101,8 @@ employees = pd.concat(
 employees.columns = list(employees_no_hashes.columns) + ['password_hash']
 
 with open('employee_cred.json', mode='w') as fp:
-    empl_email_to_password = pd.concat([employees['email'], employee_passwords_with_hashes['password']], axis=1)
+    empl_email_to_password = pd.concat(
+        [employees['email'], employee_passwords_with_hashes['password']], axis=1)
     fp.write(empl_email_to_password.to_json(indent=4))
 append_to_df('employee', employees)
 
@@ -109,7 +112,8 @@ append_to_df('employee', employees)
 
 customers_no_hashes = pd.DataFrame(
     [(i, name.lower(), surname.lower(),
-      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
+      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii',
+                                                                              errors='ignore').decode("utf-8"),
       ) for i, (name, surname) in
      enumerate(((fake.first_name(), fake.last_name()) for _ in range(100)), 1)],
     columns=['id', 'name', 'surname', 'email',]
@@ -127,7 +131,8 @@ customers = pd.concat(
 customers.columns = list(customers_no_hashes.columns) + ['password_hash']
 
 with open('customer_cred.json', mode='w') as fp:
-    cust_email_to_password = pd.concat([customers['email'], customer_passwords_with_hashes['password']], axis=1)
+    cust_email_to_password = pd.concat(
+        [customers['email'], customer_passwords_with_hashes['password']], axis=1)
     fp.write(cust_email_to_password.to_json(indent=4))
 
 
@@ -270,12 +275,9 @@ cars = pd.concat([
           loc_center_x + r * math.cos(theta),
           loc_center_y + r * math.sin(theta),
           random.choices(['available', 'decommissioned'], weights=[0.95, 0.05])[0])
-         for i, (r, theta), has_issues in zip(
-            range(50),
+         for (r, theta) in
             [[math.sqrt(random.random() * loc_radius) * math.sqrt(loc_radius), 2 * math.pi * random.random()] for _ in
-             range(50)],
-            random.choices([0, 1], weights=[0.92, 0.08], k=50)
-        )])
+             range(50)]])
 ], axis=1)
 cars.columns = ['id', 'model_id', 'model_name', 'licence_type_required', 'locationx', 'locationy',
                 'state']
@@ -384,7 +386,6 @@ def row_func(row):
         return row
     else:
         return row.replace({None: res}, regex=False)
-        return row
 
 
 rental_order = rental_order.apply(row_func, axis=1)
@@ -426,7 +427,7 @@ for table_name in insert_order:
                          if_exists='append',
                          index=False,
                          chunksize=None,
-                         method='multi' if not INSERT_DRY_RUN else lambda pd_table, conn, keys, data_iter: len(
+                         method=None if not INSERT_DRY_RUN else lambda pd_table, conn, keys, data_iter: len(
                              list(data_iter)))
     print(f"affected {aff_rows} rows")
 
