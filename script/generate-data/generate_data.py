@@ -419,8 +419,8 @@ assert set(insert_order) == set(dfs.keys())
 
 for table_name in insert_order:
     df = dfs[table_name]
-    print(u"\u001b[32m" + f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}" + u"\u001b[0m" + f"INSERT to \"{table_name}\"",
-          end=' ')
+    print(u"\u001b[32m" + f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}" +
+          u"\u001b[0m" + f"INSERT to \"{table_name}\"", end=' ')
     aff_rows = df.to_sql(name=table_name,
                          con=engine,
                          if_exists='append',
