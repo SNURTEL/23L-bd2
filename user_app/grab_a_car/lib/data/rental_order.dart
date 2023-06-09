@@ -1,7 +1,7 @@
 class RentalOrder{
   final int id;
   bool isFinished;
-  int feeRate;
+  double price;
   final DateTime startTime;
   DateTime? endTime;
   final int carId;
@@ -10,7 +10,7 @@ class RentalOrder{
   RentalOrder({
     required this.id,
     required this.isFinished,
-    required this.feeRate,
+    required this.price,
     required this.startTime,
     this.endTime,
     required this.carId,

@@ -121,9 +121,9 @@ class __RentalOrderDetails extends StatelessWidget {
             hspace,
             Row(
               children: [
-                const Text('Fee Rate: ', style: styleLeft),
+                const Text('Price: ', style: styleLeft),
                 wspace,
-                Text('${order.feeRate}', style: styleRight),
+                Text('${order.price}', style: styleRight),
               ],
             ),
             hspace,
@@ -163,7 +163,7 @@ class __RentalOrderDetails extends StatelessWidget {
         if(!order.isFinished)
           OutlinedButton(
             onPressed: () {
-              Future<bool> future = connector.finishRentalOrder(order.id);
+              Future<bool> future = connector.finishRentalOrder(order.id, order.carId);
               showFutureDialog(
                   future: future,
                   context: context,

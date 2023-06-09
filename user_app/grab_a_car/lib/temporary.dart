@@ -42,7 +42,7 @@ void debugPrintRentalOrders(Map<int, RentalOrder>? rentalOrders) {
     developer.log(
       '\n\nRental Order ID: ${order.id}\n'
           'Is Finished: ${order.isFinished}\n'
-          'Fee Rate: ${order.feeRate}\n'
+          'Fee Rate: ${order.price}\n'
           'Start Time: ${order.startTime}\n'
           'End Time: ${order.endTime}\n'
           'Car ID: ${order.carId}\n'

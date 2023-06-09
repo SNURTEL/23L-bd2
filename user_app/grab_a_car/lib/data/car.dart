@@ -13,6 +13,7 @@ class Car{
   final String modelName;
   final String carBrandName;
   final String carTypeName;
+  final double fee_rate;
   final String? color;
   final GearboxType? gearboxType;
   final FuelType? fuelType;
@@ -26,6 +27,7 @@ class Car{
     required this.modelName,
     required this.carBrandName,
     required this.carTypeName,
+    required this.fee_rate,
     this.color,
     this.gearboxType,
     this.fuelType,

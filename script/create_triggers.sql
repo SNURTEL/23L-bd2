@@ -78,29 +78,43 @@ BEGIN
         SIGNAL SQLSTATE '45000'
             SET MESSAGE_TEXT = 'Car is not available!';
     END IF;
+   
+   	SET NEW.is_finished = 0;
+   	set NEW.price = 0.0;
+   	SET NEW.start_date_time = NOW();
+   	SET NEW.end_date_time = null;
+   	SET NEW.invoice_id = null;
+   
+   UPDATE car
+   SET state = 'rented'
+   WHERE id = NEW.car_id;
+      
 END //
 
-CREATE TRIGGER renting_car AFTER INSERT ON rental_order FOR EACH ROW
+CREATE TRIGGER finished_rent
+BEFORE UPDATE ON rental_order
+FOR EACH ROW
 BEGIN
-       UPDATE rental_order
-       SET is_finished = 0, start_date_time = NOW()
-       WHERE id = NEW.id;
-       UPDATE car
-       SET state = 'rented'
-       WHERE id = NEW.car_id;
-END //
-
-CREATE TRIGGER finished_rent AFTER UPDATE ON rental_order FOR EACH ROW
-BEGIN
-       UPDATE rental_order
-       SET is_finished = 1, end_date_time = NOW()
-       WHERE id = NEW.id;
-       UPDATE car
-       SET state = 'available'
-       WHERE id = new.car_id;
+	DECLARE fee_rate double;
+	
+    IF OLD.is_finished = 0 AND NEW.is_finished = 1 THEN
+        SET NEW.end_date_time = NOW();
+       
+     	UPDATE car
+       	SET state = 'available'
+       	WHERE id = new.car_id;
+       
+      	SELECT M.fee_rate INTO fee_rate
+      	FROM car C INNER JOIN model M ON C.model_id = M.id
+      	WHERE C.id = NEW.car_id;
+      
+      	SET NEW.price = (TIMESTAMPDIFF(MINUTE, NEW.start_date_time, NEW.end_date_time)+1)*fee_rate;
+      
+    END IF;
 END //
 
 delimiter ;
+
 
 
 
