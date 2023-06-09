@@ -74,98 +74,100 @@ class _CarMapState extends State<CarMap> {
               ),
             ],
           ),
-       ExpansionTile(
-          title: const Text('Filters'),
-          backgroundColor: Colors.white,
-          collapsedBackgroundColor: Colors.white,
+       SingleChildScrollView(
+         child: ExpansionTile(
+            title: const Text('Filters'),
+            backgroundColor: Colors.white,
+            collapsedBackgroundColor: Colors.white,
 
-          children: <Widget>[
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'max distance',
-              ),
-              keyboardType: TextInputType.number,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              controller: distanceTextController,
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'car type',
-              ),
-              controller: carTypeNameController,
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'brand name',
-              ),
-              controller: carBrandNameController,
-            ),
-            TextFormField(
+            children: <Widget>[
+              TextFormField(
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
-                  labelText: 'seats numbers',
+                  labelText: 'max distance',
                 ),
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                controller: seatsTextController,
-            ),
-            MultiSelectChipField<GearboxType?>(
-              title: const Text('gearbox type'),
-              items: <MultiSelectItem<GearboxType>>[
-                MultiSelectItem<GearboxType>(GearboxType.manual, 'manual'),
-                MultiSelectItem<GearboxType>(GearboxType.automatic, 'automatic'),
-              ],
-              selectedChipColor: Colors.green,
-              icon: const Icon(Icons.check, color: Colors.white),
-              onTap: (List<GearboxType?> selectedValues){
-                selectedGearboxTypes = selectedValues;
-              },
-              initialValue: selectedGearboxTypes,
-            ),
-            MultiSelectChipField<LicenceTypeRequired?>(
-              title: const Text('licence type required'),
-              items: LicenceTypeRequired.values.map((e) => MultiSelectItem(e, e.name)).toList(),
-              selectedChipColor: Colors.green,
-              icon: const Icon(Icons.check, color: Colors.white),
-              onTap: (List<LicenceTypeRequired?> selectedValues){
-                selectedLicenceTypesRequired = selectedValues;
-              },
-              initialValue: selectedLicenceTypesRequired,
-            ),
-            MultiSelectChipField<FuelType?>(
-              title: const Text('fueal type'),
-              items: <MultiSelectItem<FuelType>>[
-                MultiSelectItem<FuelType>(FuelType.diesel, 'diesel'),
-                MultiSelectItem<FuelType>(FuelType.gasoline, 'gasoline'),
-              ],
-              selectedChipColor: Colors.green,
-              icon: const Icon(Icons.check, color: Colors.white),
-              onTap: (List<FuelType?> selectedValues){
-                selectedFuelTypes = selectedValues;
-              },
-              initialValue: selectedFuelTypes,
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'max fee (PLN/minute)',
+                controller: distanceTextController,
               ),
-              keyboardType: TextInputType.number,
-              inputFormatters: [_DoubleTextInputFormatter()],
-              controller: feeTextController,
-            ),
-          ],
-         onExpansionChanged: (bool expanding){
-            if(expanding) return;
-            List<Marker> newMarkersList = createMarkersList();
-            setState(() {
-              markersList = newMarkersList;
-            });
-         },
-        ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'car type',
+                ),
+                controller: carTypeNameController,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'brand name',
+                ),
+                controller: carBrandNameController,
+              ),
+              TextFormField(
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'seats numbers',
+                  ),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  controller: seatsTextController,
+              ),
+              MultiSelectChipField<GearboxType?>(
+                title: const Text('gearbox type'),
+                items: <MultiSelectItem<GearboxType>>[
+                  MultiSelectItem<GearboxType>(GearboxType.manual, 'manual'),
+                  MultiSelectItem<GearboxType>(GearboxType.automatic, 'automatic'),
+                ],
+                selectedChipColor: Colors.green,
+                icon: const Icon(Icons.check, color: Colors.white),
+                onTap: (List<GearboxType?> selectedValues){
+                  selectedGearboxTypes = selectedValues;
+                },
+                initialValue: selectedGearboxTypes,
+              ),
+              MultiSelectChipField<LicenceTypeRequired?>(
+                title: const Text('licence type required'),
+                items: LicenceTypeRequired.values.map((e) => MultiSelectItem(e, e.name)).toList(),
+                selectedChipColor: Colors.green,
+                icon: const Icon(Icons.check, color: Colors.white),
+                onTap: (List<LicenceTypeRequired?> selectedValues){
+                  selectedLicenceTypesRequired = selectedValues;
+                },
+                initialValue: selectedLicenceTypesRequired,
+              ),
+              MultiSelectChipField<FuelType?>(
+                title: const Text('fueal type'),
+                items: <MultiSelectItem<FuelType>>[
+                  MultiSelectItem<FuelType>(FuelType.diesel, 'diesel'),
+                  MultiSelectItem<FuelType>(FuelType.gasoline, 'gasoline'),
+                ],
+                selectedChipColor: Colors.green,
+                icon: const Icon(Icons.check, color: Colors.white),
+                onTap: (List<FuelType?> selectedValues){
+                  selectedFuelTypes = selectedValues;
+                },
+                initialValue: selectedFuelTypes,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'max fee (PLN/minute)',
+                ),
+                keyboardType: TextInputType.number,
+                inputFormatters: [_DoubleTextInputFormatter()],
+                controller: feeTextController,
+              ),
+            ],
+           onExpansionChanged: (bool expanding){
+              if(expanding) return;
+              List<Marker> newMarkersList = createMarkersList();
+              setState(() {
+                markersList = newMarkersList;
+              });
+           },
+          ),
+       ),
         Align(
          alignment: Alignment.bottomRight,
          child: Padding(
