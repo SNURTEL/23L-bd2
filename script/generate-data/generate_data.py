@@ -17,7 +17,7 @@ from sqlalchemy import sql
 from hashes import hash_list
 
 DB_CONFIG_FILE = "config.json"  # Ignored by git!
-INSERT_DRY_RUN = False
+INSERT_DRY_RUN = True
 
 DATE_FORMAT = "%Y-%m-%d"
 
@@ -77,6 +77,7 @@ append_to_df('employee_position', employee_positions)
 
 employees_no_hashes = pd.DataFrame(
     [(i, name.lower(), surname.lower(), 1,
+
       f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii',
                                                                               errors='ignore').decode("utf-8"),
       ) for i, (name, surname) in
