@@ -16,25 +16,30 @@ class LoggingApp extends StatelessWidget {
   }
   }
 
-class LoggingScaffold extends StatelessWidget {
+class LoggingScaffold extends StatefulWidget {
    LoggingScaffold({super.key, required this.logInCallback});
 
    final void Function(int) logInCallback;
 
+  @override
+  State<LoggingScaffold> createState() => _LoggingScaffoldState();
+}
+
+class _LoggingScaffoldState extends State<LoggingScaffold> {
   final GlobalKey <FormState> loginKey = GlobalKey<FormState>();
   final GlobalKey <FormState> registrationKey = GlobalKey<FormState>();
-
   final TextEditingController logEmailController = TextEditingController();
   final TextEditingController logPasswordController = TextEditingController();
-
   final TextEditingController regNameController = TextEditingController();
   final TextEditingController regSurnameController = TextEditingController();
   final TextEditingController regEmailController = TextEditingController();
   final TextEditingController regPasswordController = TextEditingController();
 
+  bool _passwordVisible = false;
+
   @override
   Widget build(BuildContext context) {
-    return   DefaultTabController(
+    return DefaultTabController(
       length: 2,
       child: Scaffold(
         body: TabBarView(
@@ -58,17 +63,27 @@ class LoggingScaffold extends StatelessWidget {
                   SizedBox(
                     width: 300,
                     child: TextFormField(
-                      decoration: const InputDecoration(
+                      controller: logPasswordController,
+                      validator: __getValidator('Password'),
+                      obscureText: !_passwordVisible,
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(),
                         labelText: 'password',
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _passwordVisible ? Icons.visibility : Icons.visibility_off,
+                            color: Theme.of(context).primaryColorDark,
+                          ),
+                          onPressed: () {
+                            setState(() {_passwordVisible = !_passwordVisible;});
+                          },
+                        ),
                       ),
-                      validator: __getValidator('Password'),
-                      controller: logPasswordController,
                     ),
                   ),
                   TextButton(
-                    onPressed: (){
-                      if(loginKey.currentState!.validate()){
+                    onPressed: () {
+                      if (loginKey.currentState!.validate()) {
                         Future<int> future = LoggingConnector.logIn(
                             email: logEmailController.text,
                             password: logPasswordController.text
@@ -82,9 +97,9 @@ class LoggingScaffold extends StatelessWidget {
                           failureInfo: 'Invalid email or passwor.',
                           successInfo: 'You have benn logged in, please wait few seconds.',
                           popOnSuccess: true,
-                        ).then((int? value){
-                          if(value != null && value > 0) {
-                            logInCallback(value);
+                        ).then((int? value) {
+                          if (value != null && value > 0) {
+                            widget.logInCallback(value);
                           }
                         });
                       }
@@ -144,25 +159,25 @@ class LoggingScaffold extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: (){
-                      if(registrationKey.currentState!.validate()){
+                    onPressed: () {
+                      if (registrationKey.currentState!.validate()) {
                         Future<int> future = LoggingConnector.register(
-                            name: regNameController.text,
-                            surname: regSurnameController.text,
-                            email: regEmailController.text,
-                            password: regPasswordController.text,
+                          name: regNameController.text,
+                          surname: regSurnameController.text,
+                          email: regEmailController.text,
+                          password: regPasswordController.text,
                         );
                         showFutureDialog(
-                            future: future,
-                            context: context,
-                            progressInfo: 'Registrating, please wait.',
-                            errorInfo: 'Unable to register.\n'
+                          future: future,
+                          context: context,
+                          progressInfo: 'Registrating, please wait.',
+                          errorInfo: 'Unable to register.\n'
                               'Please check internet connection and try again later.',
-                            failureInfo: 'Email address already in use.',
-                            successInfo: 'Congratulations!\n'
-                                'You are now registered.'
-                                'Now, you can login.',
-                            popOnSuccess: false,
+                          failureInfo: 'Email address already in use.',
+                          successInfo: 'Congratulations!\n'
+                              'You are now registered.'
+                              'Now, you can login.',
+                          popOnSuccess: false,
                         );
                       }
                     },
@@ -179,7 +194,7 @@ class LoggingScaffold extends StatelessWidget {
             labelStyle: TextStyle(fontSize: 25),
             indicatorColor: Colors.white,
             tabs: [
-              Tab(text: 'LogIn', ),
+              Tab(text: 'LogIn',),
               Tab(text: 'Register'),
             ],
           ),

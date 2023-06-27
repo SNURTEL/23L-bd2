@@ -21,6 +21,7 @@ INSERT_DRY_RUN = True
 
 DATE_FORMAT = "%Y-%m-%d"
 
+
 print(" PREP ".center(60, '='))
 if INSERT_DRY_RUN:
     print(u"\u001b[32m" + "DRY RUN ENABLED!".center(60, '=') + u"\u001b[0m")
@@ -43,8 +44,10 @@ session = Session(engine)
 Base = automap_base()
 Base.prepare(autoload_with=engine)
 
-queries = {name: session.query(table).filter(sql.false()) for name, table in Base.metadata.tables.items()}
-dfs = {name: pd.read_sql(query.statement, engine) for name, query in queries.items()}
+queries = {name: session.query(table).filter(sql.false())
+           for name, table in Base.metadata.tables.items()}
+dfs = {name: pd.read_sql(query.statement, engine)
+       for name, query in queries.items()}
 
 print(" GENERATE DATA ".center(60, '='))
 
@@ -74,11 +77,14 @@ append_to_df('employee_position', employee_positions)
 
 employees_no_hashes = pd.DataFrame(
     [(i, name.lower(), surname.lower(), 1,
-      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
+
+      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii',
+                                                                              errors='ignore').decode("utf-8"),
       ) for i, (name, surname) in
      enumerate(((fake.first_name(), fake.last_name()) for _ in range(17)), 1)] +
     [(i, name, surname, 2,
-      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
+      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii',
+                                                                              errors='ignore').decode("utf-8"),
       ) for i, (name, surname) in
      enumerate(((fake.first_name(), fake.last_name()) for _ in range(3)), 18)],
     columns=['id', 'name', 'surname', 'employee_position_id', 'email']
@@ -96,7 +102,8 @@ employees = pd.concat(
 employees.columns = list(employees_no_hashes.columns) + ['password_hash']
 
 with open('employee_cred.json', mode='w') as fp:
-    empl_email_to_password = pd.concat([employees['email'], employee_passwords_with_hashes['password']], axis=1)
+    empl_email_to_password = pd.concat(
+        [employees['email'], employee_passwords_with_hashes['password']], axis=1)
     fp.write(empl_email_to_password.to_json(indent=4))
 append_to_df('employee', employees)
 
@@ -106,7 +113,8 @@ append_to_df('employee', employees)
 
 customers_no_hashes = pd.DataFrame(
     [(i, name.lower(), surname.lower(),
-      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii', errors='ignore').decode("utf-8"),
+      f"{name[0].lower()}{surname.lower()}@{fake.free_email_domain()}".encode('ascii',
+                                                                              errors='ignore').decode("utf-8"),
       ) for i, (name, surname) in
      enumerate(((fake.first_name(), fake.last_name()) for _ in range(100)), 1)],
     columns=['id', 'name', 'surname', 'email',]
@@ -124,7 +132,8 @@ customers = pd.concat(
 customers.columns = list(customers_no_hashes.columns) + ['password_hash']
 
 with open('customer_cred.json', mode='w') as fp:
-    cust_email_to_password = pd.concat([customers['email'], customer_passwords_with_hashes['password']], axis=1)
+    cust_email_to_password = pd.concat(
+        [customers['email'], customer_passwords_with_hashes['password']], axis=1)
     fp.write(cust_email_to_password.to_json(indent=4))
 
 
@@ -171,36 +180,37 @@ append_to_df('parameter', parameter)
 ############################
 
 model = pd.DataFrame([
-    [1, '3', 'B', 'mazda', 'sedan'],
-    [2, 'a4', 'B', 'audi', 'sedan'],
-    [3, 'a6', 'B', 'audi', 'sedan'],
-    [4, 'punto', 'B', 'fiat', 'hatchback'],
-    [5, 'civic', 'B', 'honda', 'hatchback'],
-    [6, 'focus', 'B', 'ford', 'hatchback'],
-    [7, 'golf', 'B', 'volkswagen', 'hatchback'],
-    [8, 'passat', 'B', 'volkswagen', 'sedan'],
-    [9, 'clio', 'B', 'renault', 'hatchback'],
-    [10, 'megane', 'B', 'renault', 'hatchback'],
-    [11, 'corolla', 'B', 'toyota', 'hatchback'],
-    [12, 'yaris', 'B', 'toyota', 'hatchback'],
-    [13, 'auris', 'B', 'toyota', 'hatchback'],
-    [14, 'avensis', 'B', 'toyota', 'sedan'],
-    [15, 'ceed', 'B', 'kia', 'hatchback'],
-    [16, 'rio', 'B', 'kia', 'hatchback'],
-    [17, 's40', 'B', 'volvo', 'sedan'],
-    [18, 'v40', 'B', 'volvo', 'hatchback'],
-    [19, 'v50', 'B', 'volvo', 'hatchback'],
-    [20, 'xc60', 'B', 'volvo', 'suv'],
-    [21, 'xc70', 'B', 'volvo', 'suv'],
-    [22, 'c4', 'B', 'citroen', 'hatchback'],
-    [23, 'c5', 'B', 'citroen', 'sedan'],
-    [24, 'c6', 'B', 'citroen', 'sedan'],
-    [25, 'qashqai', 'B', 'nissan', 'suv'],
-    [26, 'juke', 'B', 'nissan', 'suv'],
-    [27, 'micra', 'B', 'nissan', 'hatchback'],
-    [28, 'note', 'B', 'nissan', 'hatchback'],
-    [29, 'astra', 'B', 'opel', 'hatchback']],
-    columns=['id', 'name', 'licence_type_required', 'car_brand_name', 'car_type_name']
+    [1, '3', 'A', 'mazda', 'sedan', 0.4],
+    [2, 'a4', 'B', 'audi', 'sedan', 0.7],
+    [3, 'a6', 'B', 'audi', 'sedan', 0.8],
+    [4, 'punto', 'A', 'fiat', 'hatchback', 0.3],
+    [5, 'civic', 'B', 'honda', 'hatchback', 0.5],
+    [6, 'focus', 'B', 'ford', 'hatchback', 0.6],
+    [7, 'golf', 'B', 'volkswagen', 'hatchback', 0.6],
+    [8, 'passat', 'A', 'volkswagen', 'sedan', 0.7],
+    [9, 'clio', 'B', 'renault', 'hatchback', 0.4],
+    [10, 'megane', 'B', 'renault', 'hatchback', 0.5],
+    [11, 'corolla', 'B', 'toyota', 'hatchback', 0.5],
+    [12, 'yaris', 'B', 'toyota', 'hatchback', 0.4],
+    [13, 'auris', 'B', 'toyota', 'hatchback', 0.5],
+    [14, 'avensis', 'B', 'toyota', 'sedan', 0.6],
+    [15, 'ceed', 'C', 'kia', 'hatchback', 0.5],
+    [16, 'rio', 'C', 'kia', 'hatchback', 0.4],
+    [17, 's40', 'B', 'volvo', 'sedan', 0.6],
+    [18, 'v40', 'C', 'volvo', 'hatchback', 0.5],
+    [19, 'v50', 'B', 'volvo', 'hatchback', 0.5],
+    [20, 'xc60', 'B', 'volvo', 'suv', 0.8],
+    [21, 'xc70', 'A', 'volvo', 'suv', 0.8],
+    [22, 'c4', 'A', 'citroen', 'hatchback', 0.4],
+    [23, 'c5', 'A', 'citroen', 'sedan', 0.6],
+    [24, 'c6', 'B', 'citroen', 'sedan', 0.7],
+    [25, 'qashqai', 'B', 'nissan', 'suv', 0.7],
+    [26, 'juke', 'B', 'nissan', 'suv', 0.6],
+    [27, 'micra', 'A', 'nissan', 'hatchback', 0.4],
+    [28, 'note', 'B', 'nissan', 'hatchback', 0.4],
+    [29, 'astra', 'C', 'opel', 'hatchback', 0.5]],
+    columns=['id', 'name', 'licence_type_required',
+             'car_brand_name', 'car_type_name', 'fee_rate']
 )
 append_to_df('model', model)
 
@@ -210,8 +220,10 @@ append_to_df('model', model)
 
 model_parameter = pd.DataFrame(
     [[i, 'red', None, i, 8] for i in range(1, 30)] +
-    [[i + 29, 'manual', None, i, 5] for i in range(1, 30)] +
-    [[i + 58, None, None, i, 7] for i in range(1, 30)],
+    [[i + 29, random.choices(['automatic', 'manual'], weights=[0.3, 0.7])[0], None, i, 5] for i in range(1, 30)] +
+    [[i + 58, random.choices([2, 4, 5, 7], weights=[0.05, 0.15, 0.7, 0.1])[0], None, i, 7] for i in range(1, 30)] +
+    [[i + 87, random.choices(['diesel', 'gasoline'], weights=[0.4, 0.6])
+      [0], None, i, 4] for i in range(1, 30)],
     columns=['id', 'text_value', 'numerical_value', 'model_id', 'parameter_id']
 )
 
@@ -221,11 +233,14 @@ append_to_df('model_parameter', model_parameter)
 # driving licences
 ############################
 
-fake_drv_lic_number = lambda: f"{fake.random.randint(0, 9999):04}/{fake.random.randint(0, 99):02}/{fake.random.randint(0, 9999):04}"
+
+def fake_drv_lic_number(
+): return f"{fake.random.randint(0, 9999):04}/{fake.random.randint(0, 99):02}/{fake.random.randint(0, 9999):04}"
 
 
 def fake_drv_lic(category, id):
-    start_d = fake.date_between(datetime.date(2008, 2, 21), datetime.date(2023, 5, 16))
+    start_d = fake.date_between(datetime.date(
+        2008, 2, 21), datetime.date(2023, 5, 16))
     return (id,
             fake_drv_lic_number(),
             category,
@@ -233,10 +248,12 @@ def fake_drv_lic(category, id):
             (start_d + dateutil.relativedelta.relativedelta(years=15)).strftime(DATE_FORMAT))
 
 
-drv_lic_columns = ['customer_id', 'drivers_license_number', 'drivers_license_category', 'valid_from', 'valid_until']
+drv_lic_columns = ['customer_id', 'drivers_license_number',
+                   'drivers_license_category', 'valid_from', 'valid_until']
 
 driving_licences = pd.concat([
-    pd.DataFrame([fake_drv_lic('B', customer_id) for customer_id in customers['id'][:2800]], columns=drv_lic_columns),
+    pd.DataFrame([fake_drv_lic('B', customer_id)
+                 for customer_id in customers['id'][:2800]], columns=drv_lic_columns),
     pd.DataFrame([fake_drv_lic(category, customer_id) for category, customer_id in
                   zip(random.choices(('A', 'BE', 'C'), k=170), customers['id'][2800:2970])], columns=drv_lic_columns),
     pd.DataFrame([fake_drv_lic(category, customer_id) for category, customer_id in
@@ -256,21 +273,15 @@ cars = pd.concat([
     pd.DataFrame(range(1, 51)),
     sampled_models.reset_index()['id'],
     sampled_models.reset_index()['name'],
+    sampled_models.reset_index()['licence_type_required'],
     pd.DataFrame(
-        [('B',
-          has_issues,
-          loc_center_x + r * math.cos(theta),
+        [(loc_center_x + r * math.cos(theta),
           loc_center_y + r * math.sin(theta),
-          random.choices(['available', 'decommissioned'], weights=[0.95, 0.05])[
-              0] if not has_issues else 'issues'
-          ) for i, (r, theta), has_issues in zip(
-            range(50),
+          random.choices(['available', 'decommissioned'], weights=[0.95, 0.05])[0])
+         for (r, theta) in
             [[math.sqrt(random.random() * loc_radius) * math.sqrt(loc_radius), 2 * math.pi * random.random()] for _ in
-             range(50)],
-            random.choices([0, 1], weights=[0.92, 0.08], k=50)
-        )])
-], axis=1)
-cars.columns = ['id', 'model_id', 'model_name', 'licence_type_required', 'has_issues', 'locationx', 'locationy',
+             range(50)]])], axis=1)
+cars.columns = ['id', 'model_id', 'model_name', 'licence_type_required', 'locationx', 'locationy',
                 'state']
 append_to_df('car', cars)
 
@@ -280,7 +291,8 @@ append_to_df('car', cars)
 
 registration_certificate = pd.DataFrame(
     [(car_id,
-      fake.date_between(datetime.date(2022, 5, 16), datetime.date(2023, 5, 16)).strftime(DATE_FORMAT),
+      fake.date_between(datetime.date(2022, 5, 16), datetime.date(
+          2023, 5, 16)).strftime(DATE_FORMAT),
       None) for car_id in cars['id']],
     columns=['car_id', 'start_date', 'end_date']
 )
@@ -312,8 +324,10 @@ technical_inspection = pd.DataFrame(
         mechanic,
         car
     ) for i, (date, mechanic, car) in enumerate(zip(
-        sorted(fake.date_between(datetime.date(2013, 5, 16), datetime.date(2023, 5, 16)) for _ in range(500)),
-        employees[employees['employee_position_id'] == 1]['id'].sample(500, replace=True),
+        sorted(fake.date_between(datetime.date(2013, 5, 16),
+               datetime.date(2023, 5, 16)) for _ in range(500)),
+        employees[employees['employee_position_id']
+                  == 1]['id'].sample(500, replace=True),
         cars['id'].sample(500, replace=True)
     ), 1)], columns=['id', 'date', 'mechanic_id', 'car_id']
 )
@@ -329,7 +343,7 @@ rental_order = pd.DataFrame(  # this assumes no car was rented more than once a 
     itertools.chain(*[(
         [(next(rental_order_idx_generator),
           True,
-          random.randint(80, 130),
+          random.randint(0, 100),  # TODO generate price based on fee_rate
           base_d + start_h,
           base_d + start_h + datetime.timedelta(minutes=random.randint(8, 80)),
           car,
@@ -341,28 +355,31 @@ rental_order = pd.DataFrame(  # this assumes no car was rented more than once a 
             cars.sample(num_rented_cars, replace=False)['id'],
             customers.sample(num_rented_cars, replace=False)['id'])]
     ) for base_d, num_rented_cars in zip(
-        reversed([datetime.datetime(2023, 5, 16) - datetime.timedelta(days=d) for d in range(365)]),
+        reversed([datetime.datetime(2023, 5, 16) - \
+                 datetime.timedelta(days=d) for d in range(365)]),
         (random.randint(20, 40) for _ in range(365))
     )]),
-    columns=['id', 'is_finished', 'fee_rate', 'start_date_time', 'end_date_time', 'car_id', 'customer_id', 'invoice_id']
+    columns=['id', 'is_finished', 'price', 'start_date_time',
+             'end_date_time', 'car_id', 'customer_id', 'invoice_id']
 )
 
 sampled = rental_order.sample(n=1000).sort_values('id')
 to_invoice = pd.merge(sampled, customers, left_on="customer_id", right_on="id")
-total_fees = ((to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.components['hours'] * 60 + \
+total_fees = ((to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.components['hours'] * 60 +
               (to_invoice['end_date_time'] - to_invoice['start_date_time']).dt.components['minutes']) * \
-             to_invoice['fee_rate']
+    to_invoice['price']
 invoice = pd.concat([
     pd.DataFrame(range(1, len(to_invoice) + 1)),
     total_fees,
     pd.DataFrame([fake.company_vat() for _ in range(1000)]),
     to_invoice['name'],
-    to_invoice['surname'],
-    pd.DataFrame(['' for _ in range(1000)])],
+    to_invoice['surname']],
     axis=1)
-invoice.columns = ['invoice_id', 'total', 'nip', 'customer_name', 'customer_surname', 'rental_orders']
+invoice.columns = ['invoice_id', 'total',
+                   'nip', 'customer_name', 'customer_surname']
 
-rental_order_to_invoice_mapping = dict(zip(list(to_invoice['id_x']), list(invoice['invoice_id'])))
+rental_order_to_invoice_mapping = dict(
+    zip(list(to_invoice['id_x']), list(invoice['invoice_id'])))
 
 
 def row_func(row):
@@ -371,7 +388,6 @@ def row_func(row):
         return row
     else:
         return row.replace({None: res}, regex=False)
-        return row
 
 
 rental_order = rental_order.apply(row_func, axis=1)
@@ -406,14 +422,14 @@ assert set(insert_order) == set(dfs.keys())
 
 for table_name in insert_order:
     df = dfs[table_name]
-    print(u"\u001b[32m" + f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}" + u"\u001b[0m" + f"INSERT to \"{table_name}\"",
-          end=' ')
+    print(u"\u001b[32m" + f"{'[DRY RUN] ' if INSERT_DRY_RUN else ''}" +
+          u"\u001b[0m" + f"INSERT to \"{table_name}\"", end=' ')
     aff_rows = df.to_sql(name=table_name,
                          con=engine,
                          if_exists='append',
                          index=False,
                          chunksize=None,
-                         method='multi' if not INSERT_DRY_RUN else lambda pd_table, conn, keys, data_iter: len(
+                         method=None if not INSERT_DRY_RUN else lambda pd_table, conn, keys, data_iter: len(
                              list(data_iter)))
     print(f"affected {aff_rows} rows")
 

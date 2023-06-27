@@ -9,7 +9,6 @@ CREATE TABLE car (
     model_id                    int NOT NULL,
     model_name                  varchar(50) NOT NULL,
     licence_type_required       ENUM('M', 'A', 'B1', 'B', 'C1', 'C', 'D1', 'D', 'BE', 'C1E', 'CE', 'D1E', 'DE', 'T', 'F') NOT NULL,
-    has_issues                  int NOT NULL,
     locationx                   double NOT NULL,
     locationy                   double NOT NULL,
     state                       ENUM('available', 'rented', 'issues', 'decommissioned') NOT NULL,
@@ -75,7 +74,6 @@ CREATE TABLE invoice (
     nip             bigint NOT NULL,  -- ( NIP nie mieści się w zakresie inta
     customer_name    VARCHAR(20),
     customer_surname  VARCHAR(20),
-    rental_orders     VARCHAR(500),
     PRIMARY KEY(invoice_id)
 );
 
@@ -86,6 +84,7 @@ CREATE TABLE model (
     licence_type_required ENUM('M', 'A', 'B1', 'B', 'C1', 'C', 'D1', 'D', 'BE', 'C1E', 'CE', 'D1E', 'DE', 'T', 'F') NOT NULL,
     car_brand_name           VARCHAR(50) NOT NULL,
     car_type_name           VARCHAR(50) NOT NULL,
+    fee_rate                double NOT NULL,
     PRIMARY KEY(id)
 );
 
@@ -120,7 +119,7 @@ CREATE TABLE rental_order
     (
     id          int NOT NULL AUTO_INCREMENT,
     is_finished bool NOT NULL,
-    fee_rate    int  NOT NULL,
+    price       double  NOT NULL,
     start_date_time TIMESTAMP, 
     end_date_time TIMESTAMP,
     car_id      int NOT NULL,

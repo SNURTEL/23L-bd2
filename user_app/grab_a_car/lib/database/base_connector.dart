@@ -88,7 +88,7 @@ class BaseConnector{
           'SELECT C.id as carId, C.model_name as modelName, C.model_id as modelId, '
           '  C.licence_type_required as licenceTypeRequired, C.locationX as x,'
           '  C.locationY as y,  C.state as state, M.car_brand_name as carBrandName, '
-          '  M.car_type_name as carTypeName '
+          '  M.car_type_name as carTypeName, M.fee_rate as fee_rate '
           'FROM car C inner JOIN model M on C.model_id = M.id');
 
       for (var row in result) {
@@ -128,7 +128,7 @@ class BaseConnector{
               }
             } else if (pname == 'fuel_type') {
               switch (textValue) {
-                case 'diesiel':
+                case 'diesel':
                   modelParams.fuelType = FuelType.diesel;
                   break;
                 case 'gasoline':
@@ -221,6 +221,7 @@ class BaseConnector{
             modelName: row['modelName'] as String,
             carBrandName: row['carBrandName'] as String,
             carTypeName: row['carTypeName'] as String,
+            fee_rate: row['fee_rate'] as double,
             color: modelParams.color,
             gearboxType: modelParams.gearboxType,
             fuelType: modelParams.fuelType,
@@ -243,7 +244,7 @@ class BaseConnector{
 
     try {
       var result = await conn.query(
-          'SELECT id, is_finished, fee_rate, start_date_time, end_date_time, '
+          'SELECT id, is_finished, price, start_date_time, end_date_time, '
               'car_id, invoice_id '
               'FROM rental_order WHERE customer_id = ?', [__customerId]);
 
@@ -251,7 +252,7 @@ class BaseConnector{
         allOrders[row['id'] as int] = RentalOrder(
             id: row['id'] as int,
             isFinished: row['is_finished'] == 1 ? true : false,
-            feeRate: row['fee_rate'] as int,
+            price: row['price'] as double,
             startTime: row['start_date_time'] as DateTime,
             endTime: row['end_date_time'] as DateTime?,
             carId: row['car_id'] as int,
@@ -357,15 +358,15 @@ class BaseConnector{
     try {
       DateTime now = DateTime.now();
       var result = await conn.query(
-        'INSERT INTO rental_order (is_finished, fee_rate, start_date_time, end_date_time, car_id, customer_id, invoice_id) VALUES (?, ?, ?, ?, ?, ?, ?)',
-        [0, 5, now.toUtc(), null, carId, __customerId, null],
+        'INSERT INTO rental_order (car_id, customer_id) VALUES (?, ?)',
+        [carId, __customerId],
       );
       int? resultId = result.insertId;
       if (resultId != null) {
         __presentOrders[resultId] = RentalOrder(
           id: resultId,
           isFinished: false,
-          feeRate: 5,
+          price: 0.0,
           startTime: now,
           endTime: null,
           carId: carId,
@@ -382,33 +383,29 @@ class BaseConnector{
     return false;
   }
 
-  Future<bool> finishRentalOrder(int orderId) async {
+  Future<bool> finishRentalOrder(int orderId, int carId) async {
     final MySqlConnection? conn = await ConnectionProvider.getConnection();
     if(conn == null) return false;
     DateTime now = DateTime.now();
     try {
       var result = await conn.query(
-        'UPDATE rental_order SET is_finished = ?, end_date_time = ? WHERE id = ?',
-        [1, now.toUtc(), orderId],
+        'UPDATE rental_order SET is_finished = ? WHERE id = ?',
+        [1, orderId],
       );
       int? affectedRows = result.affectedRows;
-      if(affectedRows == null) return false;
-      if (affectedRows > 0) {
-        RentalOrder? order = __presentOrders.remove(orderId);
-        if (order != null) {
-          order.isFinished = true;
-          order.endTime = now;
-          __finishedOrders[orderId] = order;
-          __cars[order.carId]?.state = CarState.available;
-          return true;
-        }
+      if(affectedRows == null || affectedRows<=0) return false;
+
+      if(await refreshOrders()){
+
+        __cars[carId]?.state = CarState.available;
+        return true;
       }
+      return false;
     } catch (e) {
       return false;
     } finally {
       await conn.close();
     }
-    return false;
   }
 
 }

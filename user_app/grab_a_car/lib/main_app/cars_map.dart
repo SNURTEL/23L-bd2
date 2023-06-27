@@ -8,6 +8,15 @@ import 'package:geolocator/geolocator.dart';
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'car_details.dart';
 
+class _DoubleTextInputFormatter extends TextInputFormatter{
+  @override
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
+    if(RegExp(r'^[0-9]*(\.[0-9]*)?$').hasMatch(newValue.text)) return newValue;
+    return oldValue;
+  }
+
+}
+
 class CarMap extends StatefulWidget {
   final BaseConnector connector;
   final LatLng userPosition = LatLng(52.219158, 21.012215);
@@ -25,12 +34,14 @@ class _CarMapState extends State<CarMap> {
   final carBrandNameController = TextEditingController();
   final carTypeNameController = TextEditingController();
   final seatsTextController = TextEditingController();
+  final feeTextController = TextEditingController();
   double? maxDistance;
   int? seatsNumber;
   List<GearboxType?> selectedGearboxTypes = [];
   List<LicenceTypeRequired?> selectedLicenceTypesRequired = [];
   List<FuelType?> selectedFuelTypes = [];
   List<CarState?> selectedCarStates = [];
+  double? maxFee;
 
 
   @override
@@ -63,89 +74,100 @@ class _CarMapState extends State<CarMap> {
               ),
             ],
           ),
-       ExpansionTile(
-          title: const Text('Filters'),
-          backgroundColor: Colors.white,
-          collapsedBackgroundColor: Colors.white,
+       SingleChildScrollView(
+         child: ExpansionTile(
+            title: const Text('Filters'),
+            backgroundColor: Colors.white,
+            collapsedBackgroundColor: Colors.white,
 
-          children: <Widget>[
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'max distance',
-              ),
-              keyboardType: TextInputType.number,
-              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-              controller: distanceTextController,
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'car type',
-              ),
-              controller: carTypeNameController,
-            ),
-            TextFormField(
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'brand name',
-              ),
-              controller: carBrandNameController,
-            ),
-            TextFormField(
+            children: <Widget>[
+              TextFormField(
                 decoration: const InputDecoration(
                   border: UnderlineInputBorder(),
-                  labelText: 'seats numbers',
+                  labelText: 'max distance',
                 ),
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                controller: seatsTextController,
-            ),
-            MultiSelectChipField<GearboxType?>(
-              title: const Text('gearbox type'),
-              items: <MultiSelectItem<GearboxType>>[
-                MultiSelectItem<GearboxType>(GearboxType.manual, 'manual'),
-                MultiSelectItem<GearboxType>(GearboxType.automatic, 'automatic'),
-              ],
-              selectedChipColor: Colors.green,
-              icon: const Icon(Icons.check, color: Colors.white),
-              onTap: (List<GearboxType?> selectedValues){
-                selectedGearboxTypes = selectedValues;
-              },
-              initialValue: selectedGearboxTypes,
-            ),
-            MultiSelectChipField<LicenceTypeRequired?>(
-              title: const Text('licence type required'),
-              items: LicenceTypeRequired.values.map((e) => MultiSelectItem(e, e.name)).toList(),
-              selectedChipColor: Colors.green,
-              icon: const Icon(Icons.check, color: Colors.white),
-              onTap: (List<LicenceTypeRequired?> selectedValues){
-                selectedLicenceTypesRequired = selectedValues;
-              },
-              initialValue: selectedLicenceTypesRequired,
-            ),
-            MultiSelectChipField<FuelType?>(
-              title: const Text('fueal type'),
-              items: <MultiSelectItem<FuelType>>[
-                MultiSelectItem<FuelType>(FuelType.diesel, 'diesel'),
-                MultiSelectItem<FuelType>(FuelType.gasoline, 'automatic'),
-              ],
-              selectedChipColor: Colors.green,
-              icon: const Icon(Icons.check, color: Colors.white),
-              onTap: (List<FuelType?> selectedValues){
-                selectedFuelTypes = selectedValues;
-              },
-              initialValue: selectedFuelTypes,
-            ),
-          ],
-         onExpansionChanged: (bool expanding){
-            if(expanding) return;
-            List<Marker> newMarkersList = createMarkersList();
-            setState(() {
-              markersList = newMarkersList;
-            });
-         },
-        ),
+                controller: distanceTextController,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'car type',
+                ),
+                controller: carTypeNameController,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'brand name',
+                ),
+                controller: carBrandNameController,
+              ),
+              TextFormField(
+                  decoration: const InputDecoration(
+                    border: UnderlineInputBorder(),
+                    labelText: 'seats numbers',
+                  ),
+                  keyboardType: TextInputType.number,
+                  inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                  controller: seatsTextController,
+              ),
+              MultiSelectChipField<GearboxType?>(
+                title: const Text('gearbox type'),
+                items: <MultiSelectItem<GearboxType>>[
+                  MultiSelectItem<GearboxType>(GearboxType.manual, 'manual'),
+                  MultiSelectItem<GearboxType>(GearboxType.automatic, 'automatic'),
+                ],
+                selectedChipColor: Colors.green,
+                icon: const Icon(Icons.check, color: Colors.white),
+                onTap: (List<GearboxType?> selectedValues){
+                  selectedGearboxTypes = selectedValues;
+                },
+                initialValue: selectedGearboxTypes,
+              ),
+              MultiSelectChipField<LicenceTypeRequired?>(
+                title: const Text('licence type required'),
+                items: LicenceTypeRequired.values.map((e) => MultiSelectItem(e, e.name)).toList(),
+                selectedChipColor: Colors.green,
+                icon: const Icon(Icons.check, color: Colors.white),
+                onTap: (List<LicenceTypeRequired?> selectedValues){
+                  selectedLicenceTypesRequired = selectedValues;
+                },
+                initialValue: selectedLicenceTypesRequired,
+              ),
+              MultiSelectChipField<FuelType?>(
+                title: const Text('fueal type'),
+                items: <MultiSelectItem<FuelType>>[
+                  MultiSelectItem<FuelType>(FuelType.diesel, 'diesel'),
+                  MultiSelectItem<FuelType>(FuelType.gasoline, 'gasoline'),
+                ],
+                selectedChipColor: Colors.green,
+                icon: const Icon(Icons.check, color: Colors.white),
+                onTap: (List<FuelType?> selectedValues){
+                  selectedFuelTypes = selectedValues;
+                },
+                initialValue: selectedFuelTypes,
+              ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'max fee (PLN/minute)',
+                ),
+                keyboardType: TextInputType.number,
+                inputFormatters: [_DoubleTextInputFormatter()],
+                controller: feeTextController,
+              ),
+            ],
+           onExpansionChanged: (bool expanding){
+              if(expanding) return;
+              List<Marker> newMarkersList = createMarkersList();
+              setState(() {
+                markersList = newMarkersList;
+              });
+           },
+          ),
+       ),
         Align(
          alignment: Alignment.bottomRight,
          child: Padding(
@@ -160,23 +182,31 @@ class _CarMapState extends State<CarMap> {
     );
   }
 
-  List<Marker> createMarkersList(){
-    if(distanceTextController.text.isEmpty){ maxDistance = null;}
+  static double? __textControllerToDouble(TextEditingController controller){
+    if(controller.text.isEmpty){return null;}
     else {
       try {
-        maxDistance = double.parse(distanceTextController.text);
+        return double.parse(controller.text);
       } catch (e) {
-        maxDistance = null;
+        return null;
       }
     }
-    if(seatsTextController.text.isEmpty){seatsNumber = null;}
-    else{
+  }
+  static int? __textControlleToInt(TextEditingController controller){
+    if(controller.text.isEmpty){return null;}
+    else {
       try {
-        seatsNumber = int.parse(seatsTextController.text);
+        return int.parse(controller.text);
       } catch (e) {
-        seatsNumber = null;
+        return null;
       }
     }
+  }
+
+  List<Marker> createMarkersList(){
+    maxDistance = __textControllerToDouble(distanceTextController);
+    seatsNumber = __textControlleToInt(seatsTextController);
+    maxFee = __textControllerToDouble(feeTextController);
 
     List<Marker> newMarkersList = [
       Marker(
@@ -219,12 +249,13 @@ class _CarMapState extends State<CarMap> {
   }
 
   bool testCar(Car car){
-    if(maxDistance != null &&
+    double? tmpDistance = maxDistance;
+    if(tmpDistance != null &&
       Geolocator.distanceBetween(
           widget.userPosition.latitude,
           widget.userPosition.longitude,
           car.position.latitude,
-          car.position.longitude) > maxDistance!
+          car.position.longitude) > tmpDistance
     ) return false;
 
     if(carBrandNameController.text.isNotEmpty &&
@@ -246,6 +277,9 @@ class _CarMapState extends State<CarMap> {
 
     if(selectedCarStates.isNotEmpty &&
         !selectedCarStates.contains(car.state)) return false;
+
+    double? tmpFee = maxFee;
+    if(tmpFee != null && car.fee_rate > tmpFee) return false;
 
     return true;
   }

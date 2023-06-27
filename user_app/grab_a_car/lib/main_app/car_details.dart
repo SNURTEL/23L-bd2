@@ -121,9 +121,17 @@ class CarDetails extends StatelessWidget {
                       const Text('Position:', style : leftStyle),
                       wspace,
                       Text(
-                          '${car.position.longitude} N '
+                          '${car.position.longitude} N \n'
                               '${car.position.latitude} E',
                           style: rightStyle),
+                    ],
+                  ),
+                  hspace,
+                  Row(
+                    children: [
+                      const Text('Fee Rate (PLN/minute):', style : leftStyle),
+                      wspace,
+                      Text('${car.fee_rate}', style: rightStyle),
                     ],
                   ),
                 ],
